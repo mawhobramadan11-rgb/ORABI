@@ -16,27 +16,30 @@ window.addEventListener("load", () => {
 
 });
 
-
 /* =========================
-   CURSOR
+   CURSOR - DESKTOP ONLY
 ========================= */
 
-const cursorDot = document.querySelector(".cursor-dot");
-const cursorGlow = document.querySelector(".cursor-glow");
+if (window.matchMedia("(min-width: 769px)").matches) {
 
-document.addEventListener("mousemove", (e) => {
+    const cursorDot = document.querySelector(".cursor-dot");
+    const cursorGlow = document.querySelector(".cursor-glow");
 
-    if (cursorDot) {
-        cursorDot.style.left = e.clientX + "px";
-        cursorDot.style.top = e.clientY + "px";
-    }
+    document.addEventListener("mousemove", (e) => {
 
-    if (cursorGlow) {
-        cursorGlow.style.left = e.clientX + "px";
-        cursorGlow.style.top = e.clientY + "px";
-    }
+        if (cursorDot) {
+            cursorDot.style.left = e.clientX + "px";
+            cursorDot.style.top = e.clientY + "px";
+        }
 
-});
+        if (cursorGlow) {
+            cursorGlow.style.left = e.clientX + "px";
+            cursorGlow.style.top = e.clientY + "px";
+        }
+
+    });
+
+}
 
 
 /* =========================
