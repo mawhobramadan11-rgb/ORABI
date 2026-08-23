@@ -1393,3 +1393,30 @@ footer{
         cursor: auto !important;
     }
 }
+/* MOBILE FIX - DISABLE ALL MOUSE EFFECTS */
+
+@media (max-width: 768px) {
+
+    .cursor-dot,
+    .cursor-glow,
+    #cursor,
+    #cursor-dot,
+    #cursor-glow,
+    .mouse-glow,
+    .mouse-light {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+    body {
+        cursor: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    #laptop3d {
+        transform: none !important;
+    }
+
+}
