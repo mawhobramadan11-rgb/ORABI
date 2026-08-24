@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -20,6 +19,7 @@
 
 <body>
 
+<!-- LOADER -->
 <div class="loader" id="loader">
     <div class="loader-logo">
         <span>ORABI</span>
@@ -31,6 +31,8 @@
     </div>
 </div>
 
+
+<!-- HEADER -->
 <header class="header">
 
     <div class="container header-inner">
@@ -58,8 +60,10 @@
 
 </header>
 
+
 <main>
 
+<!-- HERO -->
 <section class="hero" id="home">
 
     <div class="hero-glow"></div>
@@ -76,7 +80,9 @@
             <h1>
                 جهازك القادم
                 <br>
-                <strong>يبدأ من <em>ORABI</em></strong>
+                <strong>
+                    يبدأ من <em>ORABI</em>
+                </strong>
             </h1>
 
             <p>
@@ -120,6 +126,8 @@
 
         </div>
 
+
+        <!-- LAPTOP -->
         <div class="hero-product reveal">
 
             <div class="product-light"></div>
@@ -132,12 +140,16 @@
 
                         <div class="screen-frame">
 
-                            <img src="HP ZBook Power G8.png"
-                                 alt="HP ZBook Power G8">
+                            <!-- شعار ORABI فقط داخل الشاشة -->
+                            <div class="orabi-screen-logo">
 
-                            <div class="screen-overlay">
-                                <small>ORABI</small>
-                                <strong>POWER</strong>
+                                <img src="logo.png"
+                                     alt="ORABI">
+
+                                <span>ORABI</span>
+
+                                <small>عرابي</small>
+
                             </div>
 
                         </div>
@@ -145,13 +157,17 @@
                     </div>
 
                     <div class="laptop-base">
+
                         <div class="keyboard"></div>
+
                         <div class="trackpad"></div>
+
                     </div>
 
                 </div>
 
             </div>
+
 
             <div class="floating-card card-one">
                 <b>⚡</b>
@@ -174,23 +190,41 @@
 
 </section>
 
+
+<!-- MARQUEE -->
 <section class="marquee">
 
     <div class="marquee-track">
 
-        <span>ORABI</span><i>•</i>
-        <span>PERFORMANCE</span><i>•</i>
-        <span>POWER</span><i>•</i>
-        <span>QUALITY</span><i>•</i>
-        <span>ORABI</span><i>•</i>
-        <span>PERFORMANCE</span><i>•</i>
-        <span>POWER</span><i>•</i>
+        <span>ORABI</span>
+        <i>•</i>
+
+        <span>PERFORMANCE</span>
+        <i>•</i>
+
+        <span>POWER</span>
+        <i>•</i>
+
+        <span>QUALITY</span>
+        <i>•</i>
+
+        <span>ORABI</span>
+        <i>•</i>
+
+        <span>PERFORMANCE</span>
+        <i>•</i>
+
+        <span>POWER</span>
+        <i>•</i>
+
         <span>QUALITY</span>
 
     </div>
 
 </section>
 
+
+<!-- PRODUCTS -->
 <section class="products section" id="products">
 
     <div class="container">
@@ -198,9 +232,11 @@
         <div class="section-head reveal">
 
             <div>
+
                 <small>ORABI COLLECTION</small>
 
                 <h2>اختار جهازك</h2>
+
             </div>
 
             <p>
@@ -210,28 +246,44 @@
 
         </div>
 
+
         <div class="filters reveal">
 
             <div class="search-box">
+
                 <span>⌕</span>
 
-                <input id="search"
-                       type="text"
-                       placeholder="ابحث عن موديل الجهاز...">
+                <input
+                    id="search"
+                    type="text"
+                    placeholder="ابحث عن موديل الجهاز..."
+                >
+
             </div>
 
             <select id="filter">
 
                 <option value="all">كل الأجهزة</option>
-                <option value="low">أقل من 15,000</option>
-                <option value="mid">من 15,000 إلى 20,000</option>
-                <option value="high">أكثر من 20,000</option>
+
+                <option value="low">
+                    أقل من 15,000
+                </option>
+
+                <option value="mid">
+                    من 15,000 إلى 20,000
+                </option>
+
+                <option value="high">
+                    أكثر من 20,000
+                </option>
 
             </select>
 
         </div>
 
+
         <div class="products-grid" id="productsGrid">
+
 
             <!-- 1 -->
             <article class="product reveal"
@@ -283,6 +335,7 @@
 
             </article>
 
+
             <!-- 2 -->
             <article class="product reveal"
                      data-name="HP ZBook 15 G4"
@@ -307,7 +360,7 @@
                         <span>i7</span>
                         <span>RAM 16GB</span>
                         <span>SSD 512GB</span>
-                        <span>NVIDIA</span>
+                        <span>NVIDIA 4GB</span>
                     </div>
 
                     <div class="product-bottom">
@@ -322,7 +375,7 @@
                         'Core i7',
                         '16GB RAM',
                         '512GB SSD',
-                        'NVIDIA',
+                        'NVIDIA 4GB',
                         '15,000 جنيه')">
                             التفاصيل
                         </button>
@@ -332,6 +385,7 @@
                 </div>
 
             </article>
+
 
             <!-- 3 -->
             <article class="product reveal"
@@ -383,6 +437,7 @@
 
             </article>
 
+
             <!-- 4 -->
             <article class="product reveal"
                      data-name="HP EliteBook 850 G7"
@@ -429,6 +484,7 @@
                 </div>
 
             </article>
+
 
             <!-- 5 -->
             <article class="product reveal"
@@ -480,6 +536,7 @@
 
             </article>
 
+
             <!-- 6 -->
             <article class="product reveal"
                      data-name="Dell Precision 5570"
@@ -502,8 +559,8 @@
 
                     <div class="specs">
                         <span>i7-12H</span>
-                        <span>16GB DDR5</span>
-                        <span>512GB SSD</span>
+                        <span>RAM 16GB</span>
+                        <span>SSD 512GB</span>
                         <span>RTX A1000</span>
                     </div>
 
@@ -517,7 +574,7 @@
                         <button onclick="showProduct(
                         'Dell Precision 5570',
                         'Core i7-12H',
-                        '16GB DDR5',
+                        '16GB RAM',
                         '512GB SSD',
                         'RTX A1000',
                         '35,000 جنيه')">
@@ -529,6 +586,7 @@
                 </div>
 
             </article>
+
 
             <!-- 7 -->
             <article class="product reveal"
@@ -580,6 +638,7 @@
 
             </article>
 
+
             <!-- 8 -->
             <article class="product reveal"
                      data-name="Dell Latitude E5580"
@@ -603,7 +662,7 @@
                     <div class="specs">
                         <span>Core i7</span>
                         <span>RAM 16GB</span>
-                        <span>SSD</span>
+                        <span>SSD 512GB</span>
                         <span>Intel Graphics</span>
                     </div>
 
@@ -615,7 +674,7 @@
                         'Dell Latitude E5580',
                         'Core i7',
                         '16GB RAM',
-                        'SSD',
+                        '512GB SSD',
                         'Intel Graphics',
                         'اتصل بنا للسعر')">
                             التفاصيل
@@ -626,6 +685,7 @@
                 </div>
 
             </article>
+
 
             <!-- 9 -->
             <article class="product reveal"
@@ -645,7 +705,7 @@
 
                     <small>DELL LATITUDE</small>
 
-                    <h3>Dell Latitude 5440 Gen 13</h3>
+                    <h3>Dell Latitude 5440</h3>
 
                     <div class="specs">
                         <span>i7 Gen 13</span>
@@ -677,6 +737,7 @@
 
             </article>
 
+
             <!-- 10 -->
             <article class="product reveal"
                      data-name="Dell Latitude 5440 Gen 12"
@@ -695,7 +756,7 @@
 
                     <small>DELL LATITUDE</small>
 
-                    <h3>Dell Latitude 5440 Gen 12</h3>
+                    <h3>Dell Latitude 5440</h3>
 
                     <div class="specs">
                         <span>i7 Gen 12</span>
@@ -726,6 +787,7 @@
                 </div>
 
             </article>
+
 
             <!-- 11 -->
             <article class="product reveal"
@@ -783,6 +845,8 @@
 
 </section>
 
+
+<!-- ABOUT -->
 <section class="about section" id="about">
 
     <div class="container">
@@ -800,30 +864,42 @@
 
         </div>
 
+
         <div class="features">
 
             <div class="feature reveal">
                 <span>01</span>
                 <h3>أجهزة مفحوصة</h3>
-                <p>كل جهاز بيتم فحصه والتأكد من حالته قبل عرضه للبيع.</p>
+                <p>
+                    كل جهاز بيتم فحصه والتأكد من حالته
+                    قبل عرضه للبيع.
+                </p>
             </div>
 
             <div class="feature reveal">
                 <span>02</span>
                 <h3>اختيار مناسب</h3>
-                <p>بنساعدك تختار المواصفات المناسبة لشغلك وميزانيتك.</p>
+                <p>
+                    بنساعدك تختار المواصفات المناسبة
+                    لشغلك وميزانيتك.
+                </p>
             </div>
 
             <div class="feature reveal">
                 <span>03</span>
                 <h3>أسعار منافسة</h3>
-                <p>بنكون أجهزة بمواصفات قوية مقابل السعر.</p>
+                <p>
+                    بنوفر أجهزة بمواصفات قوية مقابل السعر.
+                </p>
             </div>
 
             <div class="feature reveal">
                 <span>04</span>
                 <h3>دعم مستمر</h3>
-                <p>تقدر تتواصل معانا في أي وقت للاستفسار عن الأجهزة.</p>
+                <p>
+                    تقدر تتواصل معانا في أي وقت
+                    للاستفسار عن الأجهزة.
+                </p>
             </div>
 
         </div>
@@ -832,6 +908,8 @@
 
 </section>
 
+
+<!-- REVIEWS -->
 <section class="reviews section" id="reviews">
 
     <div class="container">
@@ -843,6 +921,7 @@
             <h2>عملائنا بيتكلموا عننا</h2>
 
         </div>
+
 
         <div class="reviews-grid">
 
@@ -868,6 +947,7 @@
 
             </article>
 
+
             <article class="review reveal">
 
                 <div class="review-header">
@@ -890,6 +970,7 @@
 
             </article>
 
+
             <article class="review reveal">
 
                 <div class="review-header">
@@ -906,7 +987,8 @@
                 </div>
 
                 <p>
-                    تجربة محترمة جدًا والجهاز وصلني زي ما اتقال بالظبط.
+                    تجربة محترمة جدًا والجهاز وصلني
+                    زي ما اتقال بالظبط.
                 </p>
 
             </article>
@@ -917,6 +999,8 @@
 
 </section>
 
+
+<!-- SOCIAL -->
 <section class="social section">
 
     <div class="container">
@@ -927,19 +1011,24 @@
 
             <h2>تابع عرابي</h2>
 
-            <p>شوف الأجهزة الجديدة والعروض أول بأول.</p>
+            <p>
+                شوف الأجهزة الجديدة والعروض أول بأول.
+            </p>
 
             <div class="social-links">
 
-                <a href="https://www.facebook.com/profile.php?id=61565078710262" target="_blank">
+                <a href="https://www.facebook.com/profile.php?id=61565078710262"
+                   target="_blank">
                     Facebook
                 </a>
 
-                <a href="https://www.instagram.com/1_orabi/" target="_blank">
+                <a href="https://www.instagram.com/1_orabi/"
+                   target="_blank">
                     Instagram
                 </a>
 
-                <a href="https://www.tiktok.com/@1_orabi" target="_blank">
+                <a href="https://www.tiktok.com/@1_orabi"
+                   target="_blank">
                     TikTok
                 </a>
 
@@ -951,6 +1040,8 @@
 
 </section>
 
+
+<!-- CONTACT -->
 <section class="contact section" id="contact">
 
     <div class="container contact-inner reveal">
@@ -959,14 +1050,22 @@
 
         <h2>جاهز تختار جهازك؟</h2>
 
-        <p>كلمنا دلوقتي وخلي فريق ORABI يساعدك.</p>
+        <p>
+            كلمنا دلوقتي وخلي فريق ORABI يساعدك.
+        </p>
 
         <div class="phones">
 
-            <a href="tel:01030983469">01030983469</a>
-            <a href="tel:01091592643">01091592643</a>
+            <a href="tel:01030983469">
+                01030983469
+            </a>
+
+            <a href="tel:01091592643">
+                01091592643
+            </a>
 
         </div>
+
 
         <div class="contact-buttons">
 
@@ -995,6 +1094,8 @@
 
 </main>
 
+
+<!-- FOOTER -->
 <footer>
 
     <div class="container footer-inner">
@@ -1004,7 +1105,9 @@
             <span>عرابي</span>
         </a>
 
-        <p>لابتوبات احترافية بأسعار مميزة.</p>
+        <p>
+            لابتوبات احترافية بأسعار مميزة.
+        </p>
 
         <div class="footer-links">
 
@@ -1014,17 +1117,24 @@
 
         </div>
 
-        <small>© 2026 ORABI | عرابي</small>
+        <small>
+            © 2026 ORABI | عرابي
+        </small>
 
     </div>
 
 </footer>
 
+
+<!-- PRODUCT MODAL -->
 <div class="modal" id="modal">
 
     <div class="modal-box">
 
-        <button class="modal-close" onclick="closeProduct()">×</button>
+        <button class="modal-close"
+                onclick="closeProduct()">
+            ×
+        </button>
 
         <small>ORABI LAPTOP</small>
 
@@ -1054,7 +1164,9 @@
 
         </div>
 
-        <strong id="modalPrice" class="modal-price"></strong>
+        <strong id="modalPrice"
+                class="modal-price">
+        </strong>
 
         <a href="https://wa.me/201030983469"
            target="_blank"
@@ -1066,8 +1178,8 @@
 
 </div>
 
+
 <script src="script.js"></script>
 
 </body>
 </html>
-```
