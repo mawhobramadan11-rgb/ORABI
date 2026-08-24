@@ -6,14 +6,13 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
 }
 
 body {
     font-family: "Cairo", sans-serif;
     background:
-        radial-gradient(circle at 85% 10%, rgba(229,9,20,.09), transparent 28%),
-        radial-gradient(circle at 10% 45%, rgba(229,9,20,.055), transparent 25%),
+        radial-gradient(circle at 85% 10%, rgba(229, 9, 20, .09), transparent 28%),
+        radial-gradient(circle at 10% 45%, rgba(229, 9, 20, .055), transparent 25%),
         #050505;
     color: #fff;
     overflow-x: hidden;
@@ -28,7 +27,7 @@ body::before {
     background: linear-gradient(
         135deg,
         transparent 0%,
-        rgba(229,9,20,.018) 35%,
+        rgba(229, 9, 20, .018) 35%,
         transparent 60%
     );
 }
@@ -49,13 +48,9 @@ img {
     display: block;
 }
 
-button {
-    -webkit-tap-highlight-color: transparent;
-}
-
 .container {
-    width: min(1200px, calc(100% - 40px));
-    margin-inline: auto;
+    width: min(1200px, 92%);
+    margin: auto;
 }
 
 
@@ -78,7 +73,6 @@ button {
 .loader.hide {
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
 }
 
 .loader-logo {
@@ -136,10 +130,9 @@ button {
     left: 0;
     width: 100%;
     z-index: 5000;
-    background: rgba(5,5,5,.82);
+    background: rgba(5, 5, 5, .78);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(229,9,20,.08);
+    border-bottom: 1px solid rgba(229, 9, 20, .08);
 }
 
 .header-inner {
@@ -173,16 +166,13 @@ button {
 nav {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 28px;
-    margin-inline: auto;
+    gap: 32px;
 }
 
 nav a {
     color: #aaa;
     font-size: 14px;
     transition: .3s;
-    white-space: nowrap;
 }
 
 nav a:hover {
@@ -210,7 +200,6 @@ nav a:hover {
     color: white;
     font-size: 28px;
     cursor: pointer;
-    padding: 5px;
 }
 
 
@@ -224,23 +213,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding-top: 90px;
-}
-
-.hero-glow {
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(229,9,20,.08),
-        transparent 65%
-    );
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    pointer-events: none;
+    padding-top: 100px;
 }
 
 .hero-container {
@@ -248,7 +221,7 @@ nav a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 35px;
+    gap: 40px;
 }
 
 .hero-content {
@@ -274,7 +247,6 @@ nav a:hover {
     height: 7px;
     border-radius: 50%;
     background: #e50914;
-    box-shadow: 0 0 12px #e50914;
 }
 
 .hero h1 {
@@ -322,7 +294,6 @@ nav a:hover {
 .btn-red {
     background: #e50914;
     color: white;
-    box-shadow: 0 10px 30px rgba(229,9,20,.16);
 }
 
 .btn-outline {
@@ -358,13 +329,12 @@ nav a:hover {
 
 
 /* =========================
-   LAPTOP
+   HERO LAPTOP
 ========================= */
 
 .hero-product {
     position: relative;
     height: 600px;
-    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -388,9 +358,6 @@ nav a:hover {
     position: relative;
     z-index: 2;
     perspective: 1200px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 .laptop {
@@ -426,7 +393,7 @@ nav a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(.55) contrast(1.1);
+    filter: brightness(.45) contrast(1.1);
 }
 
 .screen-overlay {
@@ -435,14 +402,41 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,.25);
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,0,0,.10),
+            rgba(0,0,0,.40)
+        );
 }
 
+/* =========================
+   ORABI LOGO ON LAPTOP
+========================= */
+
 .screen-logo {
-    width: 110px;
+    width: 78%;
+    max-width: 335px;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 20px rgba(229,9,20,.5));
+    transform: scale(1.08);
+    filter:
+        drop-shadow(0 0 10px rgba(229,9,20,.75))
+        drop-shadow(0 0 30px rgba(229,9,20,.35))
+        drop-shadow(0 0 55px rgba(255,255,255,.12));
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% {
+        opacity: .90;
+        transform: scale(1.06);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.13);
+    }
 }
 
 .laptop-base {
@@ -487,7 +481,6 @@ nav a:hover {
     background: rgba(20,20,20,.85);
     border: 1px solid rgba(255,255,255,.10);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     padding: 11px 15px;
     border-radius: 10px;
     font-size: 12px;
@@ -633,11 +626,6 @@ nav a:hover {
     border-radius: 9px;
 }
 
-.search-box:focus-within {
-    border-color: rgba(229,9,20,.55);
-    box-shadow: 0 0 0 3px rgba(229,9,20,.06);
-}
-
 .search-box span {
     color: #e50914;
     font-size: 22px;
@@ -645,16 +633,11 @@ nav a:hover {
 
 .search-box input {
     width: 100%;
-    min-width: 0;
     border: 0;
     outline: 0;
     background: transparent;
     color: white;
     font-size: 14px;
-}
-
-.search-box input::placeholder {
-    color: #555;
 }
 
 .filters select {
@@ -684,7 +667,6 @@ nav a:hover {
     border: 1px solid #181818;
     border-radius: 15px;
     transition: .4s;
-    min-width: 0;
 }
 
 .product:hover {
@@ -780,22 +762,11 @@ nav a:hover {
     padding: 8px 13px;
     cursor: pointer;
     transition: .3s;
-    white-space: nowrap;
 }
 
 .product-bottom button:hover {
     background: #e50914;
     border-color: #e50914;
-}
-
-.no-results {
-    display: none;
-    text-align: center;
-    padding: 50px 20px;
-    color: #777;
-    border: 1px solid #1c1c1c;
-    border-radius: 12px;
-    margin-top: 20px;
 }
 
 
@@ -869,13 +840,11 @@ nav a:hover {
     background: #e50914;
     border-radius: 50%;
     font-weight: 800;
-    flex-shrink: 0;
 }
 
 .review-header div:nth-child(2) {
     display: flex;
     flex-direction: column;
-    min-width: 0;
 }
 
 .review-header strong {
@@ -891,7 +860,6 @@ nav a:hover {
     margin-right: auto;
     color: #e50914;
     font-size: 12px;
-    white-space: nowrap;
 }
 
 .review p {
@@ -994,11 +962,6 @@ nav a:hover {
     background: white;
     color: #111;
     font-weight: 700;
-    transition: .3s;
-}
-
-.contact-buttons a:hover {
-    transform: translateY(-3px);
 }
 
 
@@ -1033,10 +996,6 @@ footer {
     font-size: 12px;
 }
 
-.footer-inner > small {
-    color: #444;
-}
-
 
 /* =========================
    MODAL
@@ -1052,7 +1011,6 @@ footer {
     padding: 20px;
     background: rgba(0,0,0,.8);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     opacity: 0;
     visibility: hidden;
     transition: .3s;
@@ -1154,9 +1112,7 @@ footer {
 .reveal {
     opacity: 0;
     transform: translateY(35px);
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
+    transition: opacity .8s ease, transform .8s ease;
 }
 
 .reveal.show {
@@ -1165,42 +1121,39 @@ footer {
 }
 
 
-/* ==================================================
+/* =========================
    TABLET
-================================================== */
+========================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
 
     .container {
-        width: calc(100% - 40px);
+        width: 92%;
     }
 
     nav {
-        gap: 17px;
-    }
-
-    nav a {
-        font-size: 12px;
+        gap: 18px;
     }
 
     .hero-container {
         gap: 10px;
     }
 
-    .hero h1 {
-        font-size: 58px;
-    }
-
     .laptop {
         transform: scale(.78) rotateY(-12deg) rotateX(5deg);
     }
 
+    .screen-logo {
+        width: 78%;
+        max-width: 300px;
+    }
+
     .products-grid {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .features {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .reviews-grid {
@@ -1209,40 +1162,26 @@ footer {
 }
 
 
-/* ==================================================
+/* =========================
    MOBILE
-================================================== */
+========================= */
 
 @media (max-width: 768px) {
 
-    html {
-        scroll-padding-top: 70px;
-    }
-
-    body {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
     .container {
-        width: calc(100% - 24px);
-        max-width: 520px;
+        width: calc(100% - 30px);
     }
-
-
-    /* HEADER */
 
     .header-inner {
         min-height: 68px;
-        gap: 10px;
     }
 
     .logo strong {
-        font-size: 20px;
+        font-size: 21px;
     }
 
     .logo span {
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .header-phone {
@@ -1251,277 +1190,180 @@ footer {
 
     .menu {
         display: block;
-        margin-right: auto;
+        line-height: 1;
     }
 
     nav {
         position: fixed;
         top: 68px;
-        right: 10px;
-        left: 10px;
-        width: auto;
-        padding: 12px;
-        background: rgba(8,8,8,.98);
-        border: 1px solid rgba(229,9,20,.18);
-        border-radius: 14px;
+        right: 0;
+        width: 100%;
+        padding: 25px 20px;
+        background: rgba(5,5,5,.98);
+        border-bottom: 1px solid rgba(229,9,20,.15);
         display: flex;
         flex-direction: column;
-        gap: 3px;
+        gap: 20px;
         transform: translateY(-150%);
-        opacity: 0;
-        visibility: hidden;
-        transition:
-            transform .35s ease,
-            opacity .35s ease,
-            visibility .35s ease;
+        transition: .4s ease;
     }
 
     nav.active {
         transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
     }
 
     nav a {
         width: 100%;
         text-align: center;
-        padding: 12px 8px;
-        font-size: 14px;
-        border-radius: 8px;
+        padding: 8px;
+        font-size: 15px;
     }
-
-    nav a:active {
-        background: rgba(229,9,20,.1);
-    }
-
-
-    /* HERO */
 
     .hero {
         min-height: auto;
         padding-top: 100px;
-        padding-bottom: 25px;
     }
 
     .hero-container {
         min-height: auto;
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 15px;
     }
 
     .hero-content {
-        width: 100%;
         text-align: center;
     }
 
     .hero-badge {
-        max-width: 100%;
-        justify-content: center;
-        font-size: 10px;
-        padding: 8px 11px;
+        font-size: 11px;
         margin-bottom: 18px;
     }
 
     .hero h1 {
-        font-size: clamp(34px, 10vw, 45px);
-        line-height: 1.2;
+        font-size: 43px;
         letter-spacing: -1px;
     }
 
     .hero-content > p {
-        width: 100%;
-        font-size: 13px;
+        font-size: 14px;
         line-height: 1.9;
-        margin-top: 17px;
+        margin-top: 18px;
     }
 
     .hero-buttons {
         flex-direction: column;
         width: 100%;
-        gap: 9px;
-        margin-top: 23px;
+        margin-top: 25px;
     }
 
     .hero-buttons .btn {
         width: 100%;
-        min-height: 50px;
     }
 
     .hero-stats {
-        justify-content: space-between;
-        gap: 10px;
-        margin-top: 32px;
-        padding: 0 8px;
+        justify-content: center;
+        gap: 25px;
+        margin-top: 35px;
     }
 
     .hero-stats strong {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .hero-stats span {
-        font-size: 9px;
+        font-size: 10px;
     }
 
-
-    /* LAPTOP MOBILE */
-
     .hero-product {
-        height: 330px;
+        height: 370px;
         width: 100%;
         overflow: visible;
-        margin-top: 5px;
     }
 
     .product-light {
-        width: 260px;
-        height: 260px;
-    }
-
-    .laptop-scene {
-        width: 100%;
-        transform: translateX(0);
+        width: 280px;
+        height: 280px;
     }
 
     .laptop {
-        transform: scale(.53) rotateY(-12deg) rotateX(5deg);
-        transform-origin: center center;
+        transform: scale(.55) rotateY(-12deg) rotateX(5deg);
+        transform-origin: center;
+    }
+
+    /* الشعار كبير وواضح على شاشة اللاب في الموبايل */
+    .screen-logo {
+        width: 82%;
+        max-width: 330px;
+        transform: scale(1.08);
     }
 
     .floating-card {
-        font-size: 9px;
-        padding: 7px 9px;
-        gap: 5px;
-        border-radius: 8px;
+        font-size: 10px;
+        padding: 8px 10px;
     }
 
     .floating-card b {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .card-one {
-        top: 40px;
+        top: 45px;
         right: 0;
     }
 
     .card-two {
-        bottom: 65px;
+        bottom: 80px;
         left: 0;
     }
 
     .card-three {
-        bottom: 5px;
-        right: 20px;
+        bottom: 15px;
+        right: 25px;
     }
-
-
-    /* MARQUEE */
-
-    .marquee {
-        padding: 14px 0;
-    }
-
-    .marquee-track {
-        gap: 18px;
-        animation-duration: 18s;
-    }
-
-    .marquee span {
-        font-size: 10px;
-    }
-
-
-    /* SECTIONS */
 
     .section {
-        padding: 70px 0;
+        padding: 75px 0;
     }
 
     .section-head {
         display: block;
-        margin-bottom: 28px;
+        margin-bottom: 30px;
     }
 
     .section-head h2 {
-        font-size: 32px;
-        margin-top: 8px;
+        font-size: 35px;
     }
 
     .section-head p {
         margin-top: 12px;
-        font-size: 12px;
-        line-height: 1.9;
+        font-size: 13px;
     }
-
-
-    /* FILTER */
 
     .filters {
         flex-direction: column;
-        gap: 9px;
-        margin-bottom: 22px;
-    }
-
-    .search-box {
-        width: 100%;
-        min-height: 50px;
     }
 
     .filters select {
         width: 100%;
-        min-height: 50px;
+        min-height: 52px;
     }
-
-
-    /* PRODUCTS */
 
     .products-grid {
         grid-template-columns: 1fr;
-        gap: 14px;
-    }
-
-    .product {
-        width: 100%;
-        border-radius: 13px;
+        gap: 16px;
     }
 
     .product-image {
-        height: 225px;
+        height: 230px;
     }
 
     .product-info {
-        padding: 16px;
+        padding: 18px;
     }
 
     .product-info h3 {
-        font-size: 17px;
-        margin: 7px 0 14px;
-    }
-
-    .specs {
-        gap: 5px;
-    }
-
-    .specs span {
-        font-size: 9px;
-        padding: 5px 7px;
-    }
-
-    .product-bottom {
-        margin-top: 19px;
-        padding-top: 15px;
-    }
-
-    .product-bottom strong {
         font-size: 18px;
     }
-
-    .product-bottom button {
-        padding: 8px 12px;
-        font-size: 11px;
-    }
-
-
-    /* ABOUT */
 
     .features {
         grid-template-columns: 1fr;
@@ -1529,179 +1371,112 @@ footer {
 
     .feature {
         min-height: auto;
-        padding: 23px;
+        padding: 25px;
     }
 
     .feature h3 {
-        margin-top: 22px;
-        font-size: 18px;
+        margin-top: 25px;
     }
-
-    .feature p {
-        font-size: 12px;
-    }
-
-
-    /* REVIEWS */
 
     .reviews-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
     }
-
-    .review {
-        padding: 20px;
-    }
-
-    .review p {
-        font-size: 12px;
-    }
-
-
-    /* SOCIAL */
 
     .social-box {
-        padding: 45px 16px;
+        padding: 55px 18px;
     }
 
     .social-box h2 {
-        font-size: 32px;
-    }
-
-    .social-box p {
-        font-size: 12px;
-    }
-
-    .social-links {
-        flex-direction: column;
-        gap: 8px;
+        font-size: 34px;
     }
 
     .social-links a {
         width: 100%;
-        padding: 11px;
     }
-
-
-    /* CONTACT */
 
     .contact-inner h2 {
-        font-size: 36px;
-        line-height: 1.25;
-    }
-
-    .contact-inner > p {
-        font-size: 12px;
+        font-size: 38px;
     }
 
     .phones {
         flex-direction: column;
-        gap: 8px;
     }
 
     .phones a {
         width: 100%;
-        padding: 11px;
     }
 
     .contact-buttons {
         flex-direction: column;
-        gap: 8px;
     }
 
     .contact-buttons a {
         width: 100%;
-        min-width: 0;
-        padding: 12px;
     }
-
-
-    /* FOOTER */
 
     .footer-inner {
         flex-direction: column;
         text-align: center;
-        gap: 15px;
     }
 
     .footer-links {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 14px;
     }
 
-
-    /* MODAL */
-
     .modal {
-        padding: 10px;
+        padding: 12px;
     }
 
     .modal-box {
+        padding: 28px 16px 20px;
         width: 100%;
-        max-height: 88vh;
-        padding: 28px 15px 18px;
-        border-radius: 14px;
     }
 
     .modal-box h2 {
-        font-size: 22px;
+        font-size: 24px;
         padding-left: 35px;
-        line-height: 1.4;
     }
 
     .modal-specs {
-        grid-template-columns: 1fr 1fr;
-        gap: 7px;
+        grid-template-columns: 1fr;
     }
-
-    .modal-specs div {
-        padding: 12px 10px;
-    }
-
-    .modal-specs b {
-        font-size: 11px;
-    }
-
-    .modal-price {
-        font-size: 23px;
-    }
-
 }
 
 
-/* ==================================================
+/* =========================
    SMALL PHONES
-================================================== */
+========================= */
 
 @media (max-width: 400px) {
 
-    .container {
-        width: calc(100% - 20px);
-    }
-
     .hero h1 {
-        font-size: 34px;
+        font-size: 36px;
     }
 
     .hero-stats {
-        gap: 8px;
+        gap: 15px;
     }
 
     .hero-stats strong {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .hero-stats span {
-        font-size: 8px;
+        font-size: 9px;
     }
 
     .hero-product {
-        height: 300px;
+        height: 330px;
     }
 
     .laptop {
         transform: scale(.46) rotateY(-12deg) rotateX(5deg);
+    }
+
+    .screen-logo {
+        width: 84%;
+        max-width: 320px;
     }
 
     .floating-card {
@@ -1709,37 +1484,36 @@ footer {
     }
 
     .card-one {
-        right: -4px;
+        right: -5px;
     }
 
     .card-two {
-        left: -4px;
+        left: -5px;
     }
 
     .card-three {
-        right: 5px;
+        right: 10px;
     }
 
     .product-image {
-        height: 205px;
+        height: 210px;
     }
 
     .section-head h2 {
-        font-size: 29px;
+        font-size: 30px;
     }
-
-    .modal-specs {
-        grid-template-columns: 1fr;
-    }
-
 }
 
 
 /* =========================
-   TOUCH DEVICES
+   MOBILE TOUCH
 ========================= */
 
 @media (hover: none) {
+
+    * {
+        cursor: auto !important;
+    }
 
     .product:hover {
         transform: none;
@@ -1752,37 +1526,10 @@ footer {
     .btn:hover {
         transform: none;
     }
-
-    .contact-buttons a:hover {
-        transform: none;
-    }
-
 }
 
-
-/* =========================
-   NO CUSTOM CURSOR
-========================= */
 
 .cursor-dot,
 .cursor-glow {
     display: none !important;
-}
-
-
-/* =========================
-   REDUCED MOTION
-========================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-    }
-
 }
