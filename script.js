@@ -1,11 +1,9 @@
 /* =========================
-   ORABI WEBSITE
+   ORABI WEBSITE SCRIPT
 ========================= */
 
 
-/* =========================
-   LOADER
-========================= */
+/* LOADER */
 
 window.addEventListener("load", () => {
 
@@ -17,14 +15,12 @@ window.addEventListener("load", () => {
             loader.classList.add("hide");
         }
 
-    }, 900);
+    }, 1000);
 
 });
 
 
-/* =========================
-   MOBILE MENU
-========================= */
+/* MOBILE MENU */
 
 const menu = document.getElementById("menu");
 const nav = document.getElementById("nav");
@@ -32,17 +28,13 @@ const nav = document.getElementById("nav");
 if (menu && nav) {
 
     menu.addEventListener("click", () => {
-
         nav.classList.toggle("active");
-
     });
 
     nav.querySelectorAll("a").forEach(link => {
 
         link.addEventListener("click", () => {
-
             nav.classList.remove("active");
-
         });
 
     });
@@ -50,36 +42,74 @@ if (menu && nav) {
 }
 
 
-/* =========================
-   SMOOTH SCROLL
-========================= */
+/* SMOOTH SCROLL */
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
 
     link.addEventListener("click", function(e) {
 
-        const target =
-            document.querySelector(
-                this.getAttribute("href")
-            );
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
 
-        if (!target) return;
+        if (target) {
 
-        e.preventDefault();
+            e.preventDefault();
 
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
 
     });
 
 });
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SCROLL REVEAL */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
+
+} else {
+
+    revealElements.forEach(element => {
+        element.classList.add("show");
+    });
+
+}
+
+
+/* PRODUCT SEARCH */
 
 const searchInput =
     document.getElementById("search");
@@ -89,12 +119,10 @@ const productsGrid =
 
 function searchProducts() {
 
-    if (!searchInput || !productsGrid) return;
+    if (!productsGrid || !searchInput) return;
 
     const value =
-        searchInput.value
-        .toLowerCase()
-        .trim();
+        searchInput.value.toLowerCase().trim();
 
     const products =
         productsGrid.querySelectorAll(".product");
@@ -102,16 +130,14 @@ function searchProducts() {
     products.forEach(product => {
 
         const name =
-            (product.dataset.name || "")
-            .toLowerCase();
+            (product.dataset.name || "").toLowerCase();
 
-        const content =
-            product.innerText
-            .toLowerCase();
+        const text =
+            product.innerText.toLowerCase();
 
         const found =
             name.includes(value) ||
-            content.includes(value);
+            text.includes(value);
 
         product.style.display =
             found ? "" : "none";
@@ -130,18 +156,16 @@ if (searchInput) {
 }
 
 
-/* =========================
-   PRICE FILTER
-========================= */
+/* PRICE FILTER */
 
 const filter =
     document.getElementById("filter");
 
 function filterProducts() {
 
-    if (!filter || !productsGrid) return;
+    if (!productsGrid || !filter) return;
 
-    const value = filter.value;
+    const selected = filter.value;
 
     const products =
         productsGrid.querySelectorAll(".product");
@@ -153,7 +177,7 @@ function filterProducts() {
 
         let show = true;
 
-        if (value === "low") {
+        if (selected === "low") {
 
             show =
                 price > 0 &&
@@ -161,7 +185,7 @@ function filterProducts() {
 
         }
 
-        if (value === "mid") {
+        else if (selected === "mid") {
 
             show =
                 price >= 15000 &&
@@ -169,7 +193,7 @@ function filterProducts() {
 
         }
 
-        if (value === "high") {
+        else if (selected === "high") {
 
             show =
                 price > 20000;
@@ -193,9 +217,7 @@ if (filter) {
 }
 
 
-/* =========================
-   PRODUCT DETAILS
-========================= */
+/* PRODUCT MODAL */
 
 function showProduct(
     title,
@@ -211,41 +233,32 @@ function showProduct(
 
     if (!modal) return;
 
-    document.getElementById(
-        "modalTitle"
-    ).textContent = title;
+    document.getElementById("modalTitle").textContent =
+        title;
 
-    document.getElementById(
-        "modalCpu"
-    ).textContent = cpu;
+    document.getElementById("modalCpu").textContent =
+        cpu;
 
-    document.getElementById(
-        "modalRam"
-    ).textContent = ram;
+    document.getElementById("modalRam").textContent =
+        ram;
 
-    document.getElementById(
-        "modalStorage"
-    ).textContent = storage;
+    document.getElementById("modalStorage").textContent =
+        storage;
 
-    document.getElementById(
-        "modalGpu"
-    ).textContent = gpu;
+    document.getElementById("modalGpu").textContent =
+        gpu;
 
-    document.getElementById(
-        "modalPrice"
-    ).textContent = price;
+    document.getElementById("modalPrice").textContent =
+        price;
 
     modal.classList.add("active");
 
-    document.body.style.overflow =
-        "hidden";
+    document.body.style.overflow = "hidden";
 
 }
 
 
-/* =========================
-   CLOSE PRODUCT
-========================= */
+/* CLOSE MODAL */
 
 function closeProduct() {
 
@@ -261,21 +274,17 @@ function closeProduct() {
 }
 
 
-/* =========================
-   CLOSE MODAL OUTSIDE
-========================= */
+/* CLOSE MODAL BY CLICKING OUTSIDE */
 
-const modal =
+const productModal =
     document.getElementById("modal");
 
-if (modal) {
+if (productModal) {
 
-    modal.addEventListener("click", (e) => {
+    productModal.addEventListener("click", e => {
 
-        if (e.target === modal) {
-
+        if (e.target === productModal) {
             closeProduct();
-
         }
 
     });
@@ -283,94 +292,15 @@ if (modal) {
 }
 
 
-/* =========================
-   ESC
-========================= */
+/* ESC */
 
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", e => {
 
     if (e.key === "Escape") {
-
         closeProduct();
-
     }
 
 });
 
 
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-
-    const observer =
-        new IntersectionObserver(
-            (entries, observer) => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("show");
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.12
-            }
-        );
-
-    revealElements.forEach(element => {
-
-        observer.observe(element);
-
-    });
-
-} else {
-
-    revealElements.forEach(element => {
-
-        element.classList.add("show");
-
-    });
-
-}
-
-
-/* =========================
-   NO CUSTOM CURSOR
-========================= */
-
-const oldCursorDot =
-    document.querySelector(".cursor-dot");
-
-const oldCursorGlow =
-    document.querySelector(".cursor-glow");
-
-if (oldCursorDot) {
-    oldCursorDot.remove();
-}
-
-if (oldCursorGlow) {
-    oldCursorGlow.remove();
-}
-
-
-/* =========================
-   READY
-========================= */
-
-console.log(
-    "ORABI — Website Ready"
-);
+console.log("ORABI website loaded successfully.");
