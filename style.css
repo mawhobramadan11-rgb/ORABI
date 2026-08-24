@@ -1536,4 +1536,603 @@ footer {
 .cursor-dot,
 .cursor-glow {
     display: none !important;
+}/* =====================================================
+   ORABI - MOBILE FINAL TUNING
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: calc(100% - 24px);
+        max-width: 100%;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header-inner {
+        height: 68px;
+        min-height: 68px;
+        padding: 0 2px;
+    }
+
+    .logo strong {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    .logo span {
+        font-size: 9px;
+        margin-top: 4px;
+    }
+
+    .menu {
+        display: block;
+        font-size: 26px;
+        padding: 5px;
+    }
+
+    nav {
+        top: 68px;
+        width: 100%;
+        right: 0;
+        padding: 18px 15px 22px;
+        gap: 8px;
+        border-radius: 0 0 15px 15px;
+    }
+
+    nav a {
+        padding: 11px;
+        font-size: 14px;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+        min-height: auto;
+        padding-top: 95px;
+        padding-bottom: 20px;
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        gap: 5px;
+    }
+
+    .hero-content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-badge {
+        max-width: 100%;
+        justify-content: center;
+        font-size: 10px;
+        padding: 8px 12px;
+        margin-bottom: 18px;
+    }
+
+    .hero h1 {
+        font-size: clamp(35px, 10vw, 45px);
+        line-height: 1.18;
+    }
+
+    .hero-content > p {
+        width: 100%;
+        max-width: 350px;
+        margin: 16px auto 0;
+        font-size: 13px;
+        line-height: 1.9;
+    }
+
+    .hero-buttons {
+        width: 100%;
+        max-width: 380px;
+        margin: 23px auto 0;
+        gap: 9px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        min-height: 50px;
+    }
+
+    .hero-stats {
+        width: 100%;
+        justify-content: center;
+        gap: 22px;
+        margin-top: 30px;
+    }
+
+    .hero-stats strong {
+        font-size: 15px;
+    }
+
+    .hero-stats span {
+        font-size: 9px;
+    }
+
+
+    /* =========================
+       LAPTOP
+    ========================= */
+
+    .hero-product {
+        position: relative;
+        width: 100%;
+        height: 365px;
+        min-height: 365px;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+    }
+
+    .product-light {
+        width: 285px;
+        height: 285px;
+        filter: blur(18px);
+    }
+
+    .laptop-scene {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .laptop {
+        width: 480px;
+        flex-shrink: 0;
+        transform: scale(.56) rotateY(-12deg) rotateX(5deg);
+        transform-origin: center center;
+    }
+
+    .laptop-screen {
+        width: 440px;
+        height: 285px;
+    }
+
+    .laptop-base {
+        width: 500px;
+    }
+
+
+    /* =========================
+       ORABI LOGO
+    ========================= */
+
+    .screen-logo {
+        width: 84%;
+        max-width: 350px;
+        height: auto;
+        object-fit: contain;
+
+        transform: scale(1.05);
+
+        filter:
+            drop-shadow(0 0 8px rgba(229,9,20,.8))
+            drop-shadow(0 0 22px rgba(229,9,20,.4))
+            drop-shadow(0 0 40px rgba(255,255,255,.12));
+    }
+
+    @keyframes logoGlow {
+        0%, 100% {
+            opacity: .92;
+            transform: scale(1.05);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.10);
+        }
+    }
+
+
+    /* =========================
+       FLOATING CARDS
+    ========================= */
+
+    .floating-card {
+        font-size: 9px;
+        padding: 7px 9px;
+        gap: 6px;
+        border-radius: 8px;
+        z-index: 10;
+        white-space: nowrap;
+    }
+
+    .floating-card b {
+        font-size: 13px;
+    }
+
+    .card-one {
+        top: 35px;
+        right: 2px;
+    }
+
+    .card-two {
+        bottom: 70px;
+        left: 2px;
+    }
+
+    .card-three {
+        bottom: 12px;
+        right: 25px;
+    }
+
+
+    /* =========================
+       MARQUEE
+    ========================= */
+
+    .marquee {
+        padding: 14px 0;
+    }
+
+    .marquee-track {
+        gap: 18px;
+        animation-duration: 18s;
+    }
+
+    .marquee span {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .section {
+        padding: 65px 0;
+    }
+
+    .section-head {
+        display: block;
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+        font-size: 32px;
+        margin-top: 9px;
+    }
+
+    .section-head p {
+        margin: 10px auto 0;
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+
+    /* =========================
+       SEARCH / FILTER
+    ========================= */
+
+    .filters {
+        width: 100%;
+        flex-direction: column;
+        gap: 9px;
+        margin-bottom: 25px;
+    }
+
+    .search-box {
+        width: 100%;
+        min-height: 50px;
+    }
+
+    .filters select {
+        width: 100%;
+        min-height: 50px;
+    }
+
+
+    /* =========================
+       PRODUCTS
+    ========================= */
+
+    .products-grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .product {
+        width: 100%;
+        border-radius: 13px;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 225px;
+    }
+
+    .product-info {
+        padding: 17px;
+    }
+
+    .product-info h3 {
+        font-size: 18px;
+        margin: 7px 0 15px;
+    }
+
+    .specs {
+        gap: 5px;
+    }
+
+    .specs span {
+        font-size: 9px;
+        padding: 5px 7px;
+    }
+
+    .product-bottom {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+
+    .product-bottom strong {
+        font-size: 18px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .features {
+        grid-template-columns: 1fr;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .feature {
+        min-height: auto;
+        padding: 23px;
+    }
+
+    .feature h3 {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .feature p {
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+
+    /* =========================
+       REVIEWS
+    ========================= */
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .review {
+        padding: 20px;
+    }
+
+    .review p {
+        font-size: 12px;
+        line-height: 1.9;
+        margin-top: 18px;
+    }
+
+
+    /* =========================
+       SOCIAL
+    ========================= */
+
+    .social-box {
+        padding: 45px 18px;
+        border-radius: 15px;
+    }
+
+    .social-box h2 {
+        font-size: 32px;
+    }
+
+    .social-box p {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .social-links {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .social-links a {
+        width: 100%;
+        padding: 11px;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+        padding: 65px 0;
+    }
+
+    .contact-inner h2 {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .contact-inner > p {
+        font-size: 12px;
+    }
+
+    .phones {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .phones a {
+        width: 100%;
+        padding: 11px;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .contact-buttons a {
+        width: 100%;
+        min-width: 0;
+        padding: 12px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        padding: 35px 0;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-box {
+        width: 100%;
+        max-height: 88vh;
+        padding: 28px 16px 18px;
+        border-radius: 15px;
+    }
+
+    .modal-box h2 {
+        font-size: 23px;
+        padding-left: 30px;
+    }
+
+    .modal-specs {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .modal-specs div {
+        padding: 12px;
+    }
+
+    .modal-price {
+        font-size: 24px;
+    }
+
+
+    /* =========================
+       TOUCH
+    ========================= */
+
+    .btn,
+    .product-bottom button,
+    .social-links a,
+    .contact-buttons a {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+    .hero {
+        padding-top: 90px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .hero-content > p {
+        font-size: 12px;
+    }
+
+    .hero-stats {
+        gap: 13px;
+    }
+
+    .hero-product {
+        height: 330px;
+        min-height: 330px;
+    }
+
+    .laptop {
+        transform: scale(.48) rotateY(-12deg) rotateX(5deg);
+    }
+
+    .screen-logo {
+        width: 86%;
+        max-width: 350px;
+    }
+
+    .floating-card {
+        transform: scale(.88);
+    }
+
+    .card-one {
+        top: 30px;
+        right: -2px;
+    }
+
+    .card-two {
+        bottom: 65px;
+        left: -2px;
+    }
+
+    .card-three {
+        bottom: 8px;
+        right: 15px;
+    }
+
+    .product-image {
+        height: 210px;
+    }
+
+    .section-head h2 {
+        font-size: 29px;
+    }
 }
