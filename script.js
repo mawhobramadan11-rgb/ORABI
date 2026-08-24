@@ -1,5 +1,5 @@
 /* =========================
-   ORABI WEBSITE SCRIPT
+   ORABI WEBSITE
 ========================= */
 
 
@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
             loader.classList.add("hide");
         }
 
-    }, 1000);
+    }, 900);
 
 });
 
@@ -58,20 +58,19 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
     link.addEventListener("click", function(e) {
 
-        const target = document.querySelector(
-            this.getAttribute("href")
-        );
+        const target =
+            document.querySelector(
+                this.getAttribute("href")
+            );
 
-        if (target) {
+        if (!target) return;
 
-            e.preventDefault();
+        e.preventDefault();
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
     });
 
@@ -79,63 +78,21 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 
 /* =========================
-   SCROLL REVEAL
+   SEARCH
 ========================= */
 
-const revealElements = document.querySelectorAll(".reveal");
+const searchInput =
+    document.getElementById("search");
 
-if ("IntersectionObserver" in window) {
-
-    const observer = new IntersectionObserver(
-        (entries, observer) => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("show");
-
-                    observer.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-    revealElements.forEach(element => {
-
-        observer.observe(element);
-
-    });
-
-} else {
-
-    revealElements.forEach(element => {
-
-        element.classList.add("show");
-
-    });
-
-}
-
-
-/* =========================
-   PRODUCT SEARCH
-========================= */
-
-const searchInput = document.getElementById("search");
-const productsGrid = document.getElementById("productsGrid");
+const productsGrid =
+    document.getElementById("productsGrid");
 
 function searchProducts() {
 
-    if (!productsGrid || !searchInput) return;
+    if (!searchInput || !productsGrid) return;
 
-    const searchValue = searchInput.value
+    const value =
+        searchInput.value
         .toLowerCase()
         .trim();
 
@@ -145,23 +102,19 @@ function searchProducts() {
     products.forEach(product => {
 
         const name =
-            (product.dataset.name || "").toLowerCase();
+            (product.dataset.name || "")
+            .toLowerCase();
 
-        const text =
-            product.innerText.toLowerCase();
+        const content =
+            product.innerText
+            .toLowerCase();
 
-        if (
-            name.includes(searchValue) ||
-            text.includes(searchValue)
-        ) {
+        const found =
+            name.includes(value) ||
+            content.includes(value);
 
-            product.style.display = "";
-
-        } else {
-
-            product.style.display = "none";
-
-        }
+        product.style.display =
+            found ? "" : "none";
 
     });
 
@@ -181,13 +134,14 @@ if (searchInput) {
    PRICE FILTER
 ========================= */
 
-const filter = document.getElementById("filter");
+const filter =
+    document.getElementById("filter");
 
 function filterProducts() {
 
-    if (!productsGrid || !filter) return;
+    if (!filter || !productsGrid) return;
 
-    const selected = filter.value;
+    const value = filter.value;
 
     const products =
         productsGrid.querySelectorAll(".product");
@@ -199,7 +153,7 @@ function filterProducts() {
 
         let show = true;
 
-        if (selected === "low") {
+        if (value === "low") {
 
             show =
                 price > 0 &&
@@ -207,7 +161,7 @@ function filterProducts() {
 
         }
 
-        else if (selected === "mid") {
+        if (value === "mid") {
 
             show =
                 price >= 15000 &&
@@ -215,9 +169,10 @@ function filterProducts() {
 
         }
 
-        else if (selected === "high") {
+        if (value === "high") {
 
-            show = price > 20000;
+            show =
+                price > 20000;
 
         }
 
@@ -239,7 +194,7 @@ if (filter) {
 
 
 /* =========================
-   PRODUCT MODAL
+   PRODUCT DETAILS
 ========================= */
 
 function showProduct(
@@ -256,49 +211,29 @@ function showProduct(
 
     if (!modal) return;
 
-    const modalTitle =
-        document.getElementById("modalTitle");
+    document.getElementById(
+        "modalTitle"
+    ).textContent = title;
 
-    const modalCpu =
-        document.getElementById("modalCpu");
+    document.getElementById(
+        "modalCpu"
+    ).textContent = cpu;
 
-    const modalRam =
-        document.getElementById("modalRam");
+    document.getElementById(
+        "modalRam"
+    ).textContent = ram;
 
-    const modalStorage =
-        document.getElementById("modalStorage");
+    document.getElementById(
+        "modalStorage"
+    ).textContent = storage;
 
-    const modalGpu =
-        document.getElementById("modalGpu");
+    document.getElementById(
+        "modalGpu"
+    ).textContent = gpu;
 
-    const modalPrice =
-        document.getElementById("modalPrice");
-
-
-    if (modalTitle) {
-        modalTitle.textContent = title;
-    }
-
-    if (modalCpu) {
-        modalCpu.textContent = cpu;
-    }
-
-    if (modalRam) {
-        modalRam.textContent = ram;
-    }
-
-    if (modalStorage) {
-        modalStorage.textContent = storage;
-    }
-
-    if (modalGpu) {
-        modalGpu.textContent = gpu;
-    }
-
-    if (modalPrice) {
-        modalPrice.textContent = price;
-    }
-
+    document.getElementById(
+        "modalPrice"
+    ).textContent = price;
 
     modal.classList.add("active");
 
@@ -309,7 +244,7 @@ function showProduct(
 
 
 /* =========================
-   CLOSE MODAL
+   CLOSE PRODUCT
 ========================= */
 
 function closeProduct() {
@@ -330,72 +265,112 @@ function closeProduct() {
    CLOSE MODAL OUTSIDE
 ========================= */
 
-const productModal =
+const modal =
     document.getElementById("modal");
 
-if (productModal) {
+if (modal) {
 
-    productModal.addEventListener(
-        "click",
-        (e) => {
+    modal.addEventListener("click", (e) => {
 
-            if (e.target === productModal) {
-
-                closeProduct();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================
-   ESC CLOSE
-========================= */
-
-document.addEventListener(
-    "keydown",
-    (e) => {
-
-        if (e.key === "Escape") {
+        if (e.target === modal) {
 
             closeProduct();
 
         }
 
-    }
-);
+    });
+
+}
 
 
 /* =========================
-   REMOVE CURSOR EFFECT
+   ESC
 ========================= */
 
-const cursorGlow =
-    document.querySelector(".cursor-glow");
+document.addEventListener("keydown", (e) => {
 
-const cursorDot =
-    document.querySelector(".cursor-dot");
+    if (e.key === "Escape") {
 
-if (cursorGlow) {
+        closeProduct();
 
-    cursorGlow.remove();
+    }
 
-}
+});
 
-if (cursorDot) {
 
-    cursorDot.remove();
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+
+    const observer =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+    revealElements.forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+} else {
+
+    revealElements.forEach(element => {
+
+        element.classList.add("show");
+
+    });
 
 }
 
 
 /* =========================
-   ORABI READY
+   NO CUSTOM CURSOR
+========================= */
+
+const oldCursorDot =
+    document.querySelector(".cursor-dot");
+
+const oldCursorGlow =
+    document.querySelector(".cursor-glow");
+
+if (oldCursorDot) {
+    oldCursorDot.remove();
+}
+
+if (oldCursorGlow) {
+    oldCursorGlow.remove();
+}
+
+
+/* =========================
+   READY
 ========================= */
 
 console.log(
-    "ORABI website loaded successfully."
+    "ORABI — Website Ready"
 );
