@@ -410,34 +410,38 @@ nav a:hover {
         );
 }
 
+
 /* =========================
    ORABI LOGO ON LAPTOP
+   الشعار الجديد orabi.PNG
 ========================= */
 
 .screen-logo {
-    width: 78%;
-    max-width: 335px;
+    width: 92%;
+    max-width: 400px;
     height: auto;
     object-fit: contain;
-    transform: scale(1.08);
+
     filter:
-        drop-shadow(0 0 10px rgba(229,9,20,.75))
-        drop-shadow(0 0 30px rgba(229,9,20,.35))
-        drop-shadow(0 0 55px rgba(255,255,255,.12));
+        drop-shadow(0 0 12px rgba(229,9,20,.75))
+        drop-shadow(0 0 35px rgba(229,9,20,.40))
+        drop-shadow(0 0 60px rgba(255,255,255,.15));
+
     animation: logoGlow 3s ease-in-out infinite;
 }
 
 @keyframes logoGlow {
     0%, 100% {
-        opacity: .90;
-        transform: scale(1.06);
+        opacity: .92;
+        transform: scale(1.05);
     }
 
     50% {
         opacity: 1;
-        transform: scale(1.13);
+        transform: scale(1.12);
     }
 }
+
 
 .laptop-base {
     position: relative;
@@ -1144,8 +1148,8 @@ footer {
     }
 
     .screen-logo {
-        width: 78%;
-        max-width: 300px;
+        width: 92%;
+        max-width: 390px;
     }
 
     .products-grid {
@@ -1292,8 +1296,8 @@ footer {
 
     /* الشعار كبير وواضح على شاشة اللاب في الموبايل */
     .screen-logo {
-        width: 82%;
-        max-width: 330px;
+        width: 94%;
+        max-width: 380px;
         transform: scale(1.08);
     }
 
@@ -1475,8 +1479,8 @@ footer {
     }
 
     .screen-logo {
-        width: 84%;
-        max-width: 320px;
+        width: 96%;
+        max-width: 370px;
     }
 
     .floating-card {
