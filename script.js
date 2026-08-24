@@ -11,8 +11,7 @@ window.addEventListener("load", () => {
 
     setTimeout(() => {
 
-        const loader =
-            document.getElementById("loader");
+        const loader = document.getElementById("loader");
 
         if (loader) {
             loader.classList.add("hide");
@@ -27,12 +26,8 @@ window.addEventListener("load", () => {
    MOBILE MENU
 ========================= */
 
-const menu =
-    document.getElementById("menu");
-
-const nav =
-    document.getElementById("nav");
-
+const menu = document.getElementById("menu");
+const nav = document.getElementById("nav");
 
 if (menu && nav) {
 
@@ -41,7 +36,6 @@ if (menu && nav) {
         nav.classList.toggle("active");
 
     });
-
 
     nav.querySelectorAll("a").forEach(link => {
 
@@ -60,38 +54,26 @@ if (menu && nav) {
    SMOOTH SCROLL
 ========================= */
 
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
+document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-        link.addEventListener("click", function (event) {
+    link.addEventListener("click", function (e) {
 
-            const targetId =
-                this.getAttribute("href");
+        const targetId = this.getAttribute("href");
 
-            if (
-                !targetId ||
-                targetId === "#"
-            ) {
-                return;
-            }
+        if (!targetId || targetId === "#") {
+            return;
+        }
 
-            const target =
-                document.querySelector(targetId);
+        const target = document.querySelector(targetId);
 
-            if (!target) {
-                return;
-            }
+        if (target) {
 
-            event.preventDefault();
-
-            const header =
-                document.querySelector(".header");
+            e.preventDefault();
 
             const headerHeight =
-                header
-                    ? header.offsetHeight
-                    : 70;
+                window.innerWidth <= 768
+                    ? 68
+                    : 78;
 
             const targetPosition =
                 target.getBoundingClientRect().top +
@@ -99,16 +81,15 @@ document
                 headerHeight;
 
             window.scrollTo({
-
                 top: targetPosition,
-
                 behavior: "smooth"
-
             });
 
-        });
+        }
 
     });
+
+});
 
 
 /* =========================
@@ -117,7 +98,6 @@ document
 
 const revealElements =
     document.querySelectorAll(".reveal");
-
 
 if ("IntersectionObserver" in window) {
 
@@ -143,12 +123,10 @@ if ("IntersectionObserver" in window) {
             },
 
             {
-                threshold: 0.08,
-                rootMargin: "0px 0px -30px 0px"
+                threshold: 0.10
             }
 
         );
-
 
     revealElements.forEach(element => {
 
@@ -180,9 +158,6 @@ const productsGrid =
 const filter =
     document.getElementById("filter");
 
-const noResults =
-    document.getElementById("noResults");
-
 
 function applyProductsFilter() {
 
@@ -190,55 +165,38 @@ function applyProductsFilter() {
         return;
     }
 
-
     const searchValue =
         searchInput
-            ? searchInput.value
-                .toLowerCase()
-                .trim()
+            ? searchInput.value.toLowerCase().trim()
             : "";
-
 
     const selected =
         filter
             ? filter.value
             : "all";
 
-
     const products =
         productsGrid.querySelectorAll(".product");
-
-
-    let visibleCount = 0;
 
 
     products.forEach(product => {
 
         const name =
             (product.dataset.name || "")
-                .toLowerCase();
-
+            .toLowerCase();
 
         const text =
-            (product.innerText || "")
-                .toLowerCase();
-
+            product.innerText.toLowerCase();
 
         const price =
-            Number(
-                product.dataset.price || 0
-            );
+            Number(product.dataset.price || 0);
 
-
-        /* SEARCH */
 
         const matchesSearch =
             !searchValue ||
             name.includes(searchValue) ||
             text.includes(searchValue);
 
-
-        /* PRICE */
 
         let matchesPrice = true;
 
@@ -269,32 +227,12 @@ function applyProductsFilter() {
         }
 
 
-        const visible =
-            matchesSearch &&
-            matchesPrice;
-
-
         product.style.display =
-            visible
+            matchesSearch && matchesPrice
                 ? ""
                 : "none";
 
-
-        if (visible) {
-            visibleCount++;
-        }
-
     });
-
-
-    if (noResults) {
-
-        noResults.style.display =
-            visibleCount === 0
-                ? "block"
-                : "none";
-
-    }
 
 }
 
@@ -343,17 +281,12 @@ if (laptop) {
             (event) => {
 
                 const x =
-                    (
-                        window.innerWidth / 2 -
-                        event.clientX
-                    ) / 55;
-
+                    (window.innerWidth / 2 -
+                    event.clientX) / 55;
 
                 const y =
-                    (
-                        window.innerHeight / 2 -
-                        event.clientY
-                    ) / 70;
+                    (window.innerHeight / 2 -
+                    event.clientY) / 70;
 
 
                 laptop.style.transform =
@@ -384,7 +317,6 @@ function showProduct(
     const modal =
         document.getElementById("modal");
 
-
     if (!modal) {
         return;
     }
@@ -413,26 +345,21 @@ function showProduct(
         modalTitle.textContent = title;
     }
 
-
     if (modalCpu) {
         modalCpu.textContent = cpu;
     }
-
 
     if (modalRam) {
         modalRam.textContent = ram;
     }
 
-
     if (modalStorage) {
         modalStorage.textContent = storage;
     }
 
-
     if (modalGpu) {
         modalGpu.textContent = gpu;
     }
-
 
     if (modalPrice) {
         modalPrice.textContent = price;
@@ -455,11 +382,9 @@ function closeProduct() {
     const modal =
         document.getElementById("modal");
 
-
     if (!modal) {
         return;
     }
-
 
     modal.classList.remove("active");
 
@@ -545,27 +470,6 @@ window.addEventListener(
 
         if (
             window.innerWidth > 768 &&
-            nav
-        ) {
-
-            nav.classList.remove("active");
-
-        }
-
-    }
-);
-
-
-/* =========================
-   ESCAPE MOBILE MENU
-========================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key === "Escape" &&
             nav
         ) {
 
