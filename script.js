@@ -1,9 +1,12 @@
-/* =========================
+```javascript
+/* =========================================================
    ORABI PREMIUM SCRIPT
-========================= */
+========================================================= */
 
 
-/* LOADER */
+/* =========================================================
+   LOADER
+========================================================= */
 
 window.addEventListener("load", () => {
 
@@ -20,24 +23,9 @@ window.addEventListener("load", () => {
 });
 
 
-/* NAVBAR */
-
-const navbar = document.getElementById("navbar");
-
-window.addEventListener("scroll", () => {
-
-    if (!navbar) return;
-
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
-    }
-
-});
-
-
-/* MOBILE MENU */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
 const menu = document.getElementById("menu");
 const nav = document.getElementById("nav");
@@ -59,17 +47,19 @@ if (menu && nav) {
 }
 
 
-/* SMOOTH SCROLL */
+/* =========================================================
+   SMOOTH SCROLL
+========================================================= */
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
 
     link.addEventListener("click", function(e) {
 
-        const id = this.getAttribute("href");
+        const selector = this.getAttribute("href");
 
-        if (!id || id === "#") return;
+        if (!selector || selector === "#") return;
 
-        const target = document.querySelector(id);
+        const target = document.querySelector(selector);
 
         if (!target) return;
 
@@ -85,7 +75,9 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 
-/* SCROLL REVEAL */
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
 const revealElements =
     document.querySelectorAll(".reveal");
@@ -127,34 +119,56 @@ if ("IntersectionObserver" in window) {
 }
 
 
-/* LAPTOP 3D
-   DESKTOP ONLY */
+/* =========================================================
+   PREMIUM LAPTOP PARALLAX
+   DESKTOP ONLY
+========================================================= */
 
 const laptop =
     document.getElementById("laptop3d");
 
-if (
-    laptop &&
-    window.matchMedia("(min-width: 901px)").matches
-) {
+const desktop =
+    window.matchMedia("(min-width: 901px)");
+
+if (laptop && desktop.matches) {
+
+    let targetX = -10;
+    let targetY = 5;
+
+    let currentX = targetX;
+    let currentY = targetY;
 
     document.addEventListener("mousemove", e => {
 
-        const x =
-            (window.innerWidth / 2 - e.clientX) / 70;
+        targetX =
+            (window.innerWidth / 2 - e.clientX) / 45 - 4;
 
-        const y =
-            (window.innerHeight / 2 - e.clientY) / 90;
-
-        laptop.style.transform =
-            `rotateY(${x}deg) rotateX(${-y}deg) translateY(-8px)`;
+        targetY =
+            (window.innerHeight / 2 - e.clientY) / 65 + 3;
 
     });
+
+    function animateLaptop() {
+
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
+
+        laptop.style.transform =
+            `rotateY(${currentX}deg)
+             rotateX(${-currentY}deg)
+             translateY(-5px)`;
+
+        requestAnimationFrame(animateLaptop);
+    }
+
+    animateLaptop();
 
 }
 
 
-/* PRODUCT SEARCH */
+/* =========================================================
+   PRODUCT SEARCH
+========================================================= */
 
 const searchInput =
     document.getElementById("search");
@@ -162,19 +176,14 @@ const searchInput =
 const productsGrid =
     document.getElementById("productsGrid");
 
-function updateProducts() {
+function searchProducts() {
 
-    if (!productsGrid) return;
+    if (!searchInput || !productsGrid) return;
 
-    const searchValue =
-        searchInput
-            ? searchInput.value.toLowerCase().trim()
-            : "";
-
-    const selected =
-        document.getElementById("filter")
-            ? document.getElementById("filter").value
-            : "all";
+    const value =
+        searchInput.value
+        .toLowerCase()
+        .trim();
 
     const products =
         productsGrid.querySelectorAll(".product");
@@ -182,66 +191,101 @@ function updateProducts() {
     products.forEach(product => {
 
         const name =
-            (product.dataset.name || "").toLowerCase();
+            (product.dataset.name || "")
+            .toLowerCase();
 
         const text =
-            product.innerText.toLowerCase();
+            product.innerText
+            .toLowerCase();
 
-        const price =
-            Number(product.dataset.price || 0);
-
-        let matchesSearch =
-            name.includes(searchValue) ||
-            text.includes(searchValue);
-
-        let matchesFilter = true;
-
-        if (selected === "low") {
-            matchesFilter =
-                price > 0 && price < 15000;
-        }
-
-        if (selected === "mid") {
-            matchesFilter =
-                price >= 15000 &&
-                price <= 20000;
-        }
-
-        if (selected === "high") {
-            matchesFilter =
-                price > 20000;
-        }
+        const match =
+            name.includes(value) ||
+            text.includes(value);
 
         product.style.display =
-            matchesSearch && matchesFilter
-                ? ""
-                : "none";
+            match ? "" : "none";
 
     });
 
 }
 
-
 if (searchInput) {
+
     searchInput.addEventListener(
         "input",
-        updateProducts
+        searchProducts
     );
+
 }
 
+
+/* =========================================================
+   PRICE FILTER
+========================================================= */
 
 const filter =
     document.getElementById("filter");
 
+function filterProducts() {
+
+    if (!productsGrid || !filter) return;
+
+    const selected =
+        filter.value;
+
+    const products =
+        productsGrid.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        const price =
+            Number(product.dataset.price || 0);
+
+        let show = true;
+
+        if (selected === "low") {
+
+            show =
+                price > 0 &&
+                price < 15000;
+
+        }
+
+        else if (selected === "mid") {
+
+            show =
+                price >= 15000 &&
+                price <= 20000;
+
+        }
+
+        else if (selected === "high") {
+
+            show =
+                price > 20000;
+
+        }
+
+        product.style.display =
+            show ? "" : "none";
+
+    });
+
+}
+
 if (filter) {
+
     filter.addEventListener(
         "change",
-        updateProducts
+        filterProducts
     );
+
 }
 
 
-/* PRODUCT MODAL */
+/* =========================================================
+   PRODUCT MODAL
+========================================================= */
 
 function showProduct(
     title,
@@ -257,32 +301,35 @@ function showProduct(
 
     if (!modal) return;
 
-    document.getElementById("modalTitle").textContent =
-        title;
+    const fields = {
+        modalTitle:title,
+        modalCpu:cpu,
+        modalRam:ram,
+        modalStorage:storage,
+        modalGpu:gpu,
+        modalPrice:price
+    };
 
-    document.getElementById("modalCpu").textContent =
-        cpu;
+    Object.entries(fields).forEach(
+        ([id,value]) => {
 
-    document.getElementById("modalRam").textContent =
-        ram;
+            const element =
+                document.getElementById(id);
 
-    document.getElementById("modalStorage").textContent =
-        storage;
+            if (element) {
+                element.textContent = value;
+            }
 
-    document.getElementById("modalGpu").textContent =
-        gpu;
-
-    document.getElementById("modalPrice").textContent =
-        price;
+        }
+    );
 
     modal.classList.add("active");
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 
 }
 
-
-/* CLOSE MODAL */
 
 function closeProduct() {
 
@@ -293,73 +340,133 @@ function closeProduct() {
 
     modal.classList.remove("active");
 
-    document.body.style.overflow = "";
+    document.body.style.overflow =
+        "";
 
 }
 
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
 
 const productModal =
     document.getElementById("modal");
 
 if (productModal) {
 
-    productModal.addEventListener("click", e => {
+    productModal.addEventListener(
+        "click",
+        e => {
 
-        if (e.target === productModal) {
-            closeProduct();
+            if (e.target === productModal) {
+                closeProduct();
+            }
+
         }
-
-    });
+    );
 
 }
 
+document.addEventListener(
+    "keydown",
+    e => {
 
-/* ESC */
+        if (e.key === "Escape") {
+            closeProduct();
+        }
 
-document.addEventListener("keydown", e => {
-
-    if (e.key === "Escape") {
-        closeProduct();
     }
-
-});
-
-
-/* PARALLAX */
-
-const heroBg =
-    document.querySelector(".hero-bg");
-
-window.addEventListener("scroll", () => {
-
-    if (!heroBg) return;
-
-    const y =
-        window.scrollY * 0.18;
-
-    heroBg.style.transform =
-        `translate(-50%, calc(-50% + ${y}px))`;
-
-});
+);
 
 
-/* REDUCE MOTION */
+/* =========================================================
+   3D TILT FOR PRODUCT CARDS
+========================================================= */
 
-if (
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches
-) {
+if (window.matchMedia("(min-width: 901px)").matches) {
 
-    document.querySelectorAll(".reveal")
-        .forEach(el => {
+    document
+        .querySelectorAll(".product")
+        .forEach(card => {
 
-            el.style.transition = "none";
-            el.classList.add("show");
+            card.addEventListener(
+                "mousemove",
+                e => {
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+                    const x =
+                        e.clientX - rect.left;
+
+                    const y =
+                        e.clientY - rect.top;
+
+                    const rotateY =
+                        ((x / rect.width) - .5) * 4;
+
+                    const rotateX =
+                        ((y / rect.height) - .5) * -4;
+
+                    card.style.transform =
+                        `translateY(-10px)
+                         perspective(900px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)`;
+
+                }
+            );
+
+            card.addEventListener(
+                "mouseleave",
+                () => {
+
+                    card.style.transform = "";
+
+                }
+            );
 
         });
 
 }
 
 
-console.log("ORABI Premium Website Loaded");
+/* =========================================================
+   NAVBAR SCROLL EFFECT
+========================================================= */
+
+const navbar =
+    document.querySelector(".navbar");
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (!navbar) return;
+
+        if (window.scrollY > 30) {
+
+            navbar.style.background =
+                "rgba(5,5,5,.88)";
+
+        } else {
+
+            navbar.style.background =
+                "rgba(5,5,5,.55)";
+
+        }
+
+    },
+    {passive:true}
+);
+
+
+/* =========================================================
+   ORABI READY
+========================================================= */
+
+console.log(
+    "ORABI Premium Experience Loaded."
+);
+```
