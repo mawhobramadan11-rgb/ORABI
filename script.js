@@ -1,5 +1,5 @@
 /* =========================
-   ORABI WEBSITE SCRIPT
+   ORABI PREMIUM SCRIPT
 ========================= */
 
 
@@ -15,7 +15,24 @@ window.addEventListener("load", () => {
             loader.classList.add("hide");
         }
 
-    }, 1000);
+    }, 900);
+
+});
+
+
+/* NAVBAR */
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    if (!navbar) return;
+
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
 
 });
 
@@ -48,20 +65,20 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
     link.addEventListener("click", function(e) {
 
-        const target = document.querySelector(
-            this.getAttribute("href")
-        );
+        const id = this.getAttribute("href");
 
-        if (target) {
+        if (!id || id === "#") return;
 
-            e.preventDefault();
+        const target = document.querySelector(id);
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        if (!target) return;
 
-        }
+        e.preventDefault();
+
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
     });
 
@@ -75,26 +92,27 @@ const revealElements =
 
 if ("IntersectionObserver" in window) {
 
-    const observer = new IntersectionObserver(
-        (entries, observer) => {
+    const observer =
+        new IntersectionObserver(
+            (entries, observer) => {
 
-            entries.forEach(entry => {
+                entries.forEach(entry => {
 
-                if (entry.isIntersecting) {
+                    if (entry.isIntersecting) {
 
-                    entry.target.classList.add("show");
+                        entry.target.classList.add("show");
 
-                    observer.unobserve(entry.target);
+                        observer.unobserve(entry.target);
 
-                }
+                    }
 
-            });
+                });
 
-        },
-        {
-            threshold: 0.12
-        }
-    );
+            },
+            {
+                threshold:0.12
+            }
+        );
 
     revealElements.forEach(element => {
         observer.observe(element);
@@ -109,6 +127,33 @@ if ("IntersectionObserver" in window) {
 }
 
 
+/* LAPTOP 3D
+   DESKTOP ONLY */
+
+const laptop =
+    document.getElementById("laptop3d");
+
+if (
+    laptop &&
+    window.matchMedia("(min-width: 901px)").matches
+) {
+
+    document.addEventListener("mousemove", e => {
+
+        const x =
+            (window.innerWidth / 2 - e.clientX) / 70;
+
+        const y =
+            (window.innerHeight / 2 - e.clientY) / 90;
+
+        laptop.style.transform =
+            `rotateY(${x}deg) rotateX(${-y}deg) translateY(-8px)`;
+
+    });
+
+}
+
+
 /* PRODUCT SEARCH */
 
 const searchInput =
@@ -117,12 +162,19 @@ const searchInput =
 const productsGrid =
     document.getElementById("productsGrid");
 
-function searchProducts() {
+function updateProducts() {
 
-    if (!productsGrid || !searchInput) return;
+    if (!productsGrid) return;
 
-    const value =
-        searchInput.value.toLowerCase().trim();
+    const searchValue =
+        searchInput
+            ? searchInput.value.toLowerCase().trim()
+            : "";
+
+    const selected =
+        document.getElementById("filter")
+            ? document.getElementById("filter").value
+            : "all";
 
     const products =
         productsGrid.querySelectorAll(".product");
@@ -135,85 +187,57 @@ function searchProducts() {
         const text =
             product.innerText.toLowerCase();
 
-        const found =
-            name.includes(value) ||
-            text.includes(value);
+        const price =
+            Number(product.dataset.price || 0);
+
+        let matchesSearch =
+            name.includes(searchValue) ||
+            text.includes(searchValue);
+
+        let matchesFilter = true;
+
+        if (selected === "low") {
+            matchesFilter =
+                price > 0 && price < 15000;
+        }
+
+        if (selected === "mid") {
+            matchesFilter =
+                price >= 15000 &&
+                price <= 20000;
+        }
+
+        if (selected === "high") {
+            matchesFilter =
+                price > 20000;
+        }
 
         product.style.display =
-            found ? "" : "none";
+            matchesSearch && matchesFilter
+                ? ""
+                : "none";
 
     });
 
 }
 
-if (searchInput) {
 
+if (searchInput) {
     searchInput.addEventListener(
         "input",
-        searchProducts
+        updateProducts
     );
-
 }
 
-
-/* PRICE FILTER */
 
 const filter =
     document.getElementById("filter");
 
-function filterProducts() {
-
-    if (!productsGrid || !filter) return;
-
-    const selected = filter.value;
-
-    const products =
-        productsGrid.querySelectorAll(".product");
-
-    products.forEach(product => {
-
-        const price =
-            Number(product.dataset.price || 0);
-
-        let show = true;
-
-        if (selected === "low") {
-
-            show =
-                price > 0 &&
-                price < 15000;
-
-        }
-
-        else if (selected === "mid") {
-
-            show =
-                price >= 15000 &&
-                price <= 20000;
-
-        }
-
-        else if (selected === "high") {
-
-            show =
-                price > 20000;
-
-        }
-
-        product.style.display =
-            show ? "" : "none";
-
-    });
-
-}
-
 if (filter) {
-
     filter.addEventListener(
         "change",
-        filterProducts
+        updateProducts
     );
-
 }
 
 
@@ -274,8 +298,6 @@ function closeProduct() {
 }
 
 
-/* CLOSE MODAL BY CLICKING OUTSIDE */
-
 const productModal =
     document.getElementById("modal");
 
@@ -303,4 +325,41 @@ document.addEventListener("keydown", e => {
 });
 
 
-console.log("ORABI website loaded successfully.");
+/* PARALLAX */
+
+const heroBg =
+    document.querySelector(".hero-bg");
+
+window.addEventListener("scroll", () => {
+
+    if (!heroBg) return;
+
+    const y =
+        window.scrollY * 0.18;
+
+    heroBg.style.transform =
+        `translate(-50%, calc(-50% + ${y}px))`;
+
+});
+
+
+/* REDUCE MOTION */
+
+if (
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+) {
+
+    document.querySelectorAll(".reveal")
+        .forEach(el => {
+
+            el.style.transition = "none";
+            el.classList.add("show");
+
+        });
+
+}
+
+
+console.log("ORABI Premium Website Loaded");
