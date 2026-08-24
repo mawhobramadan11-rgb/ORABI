@@ -11,7 +11,8 @@ window.addEventListener("load", () => {
 
     setTimeout(() => {
 
-        const loader = document.getElementById("loader");
+        const loader =
+            document.getElementById("loader");
 
         if (loader) {
             loader.classList.add("hide");
@@ -26,8 +27,12 @@ window.addEventListener("load", () => {
    MOBILE MENU
 ========================= */
 
-const menu = document.getElementById("menu");
-const nav = document.getElementById("nav");
+const menu =
+    document.getElementById("menu");
+
+const nav =
+    document.getElementById("nav");
+
 
 if (menu && nav) {
 
@@ -36,6 +41,7 @@ if (menu && nav) {
         nav.classList.toggle("active");
 
     });
+
 
     nav.querySelectorAll("a").forEach(link => {
 
@@ -54,23 +60,38 @@ if (menu && nav) {
    SMOOTH SCROLL
 ========================= */
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
 
-    link.addEventListener("click", function (e) {
+        link.addEventListener("click", function (event) {
 
-        const targetId = this.getAttribute("href");
+            const targetId =
+                this.getAttribute("href");
 
-        if (!targetId || targetId === "#") {
-            return;
-        }
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
+                return;
+            }
 
-        const target = document.querySelector(targetId);
+            const target =
+                document.querySelector(targetId);
 
-        if (target) {
+            if (!target) {
+                return;
+            }
 
-            e.preventDefault();
+            event.preventDefault();
 
-            const headerHeight = 70;
+            const header =
+                document.querySelector(".header");
+
+            const headerHeight =
+                header
+                    ? header.offsetHeight
+                    : 70;
 
             const targetPosition =
                 target.getBoundingClientRect().top +
@@ -78,15 +99,16 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
                 headerHeight;
 
             window.scrollTo({
+
                 top: targetPosition,
+
                 behavior: "smooth"
+
             });
 
-        }
+        });
 
     });
-
-});
 
 
 /* =========================
@@ -95,6 +117,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 const revealElements =
     document.querySelectorAll(".reveal");
+
 
 if ("IntersectionObserver" in window) {
 
@@ -120,10 +143,12 @@ if ("IntersectionObserver" in window) {
             },
 
             {
-                threshold: 0.10
+                threshold: 0.08,
+                rootMargin: "0px 0px -30px 0px"
             }
 
         );
+
 
     revealElements.forEach(element => {
 
@@ -155,6 +180,9 @@ const productsGrid =
 const filter =
     document.getElementById("filter");
 
+const noResults =
+    document.getElementById("noResults");
+
 
 function applyProductsFilter() {
 
@@ -162,31 +190,44 @@ function applyProductsFilter() {
         return;
     }
 
+
     const searchValue =
         searchInput
-            ? searchInput.value.toLowerCase().trim()
+            ? searchInput.value
+                .toLowerCase()
+                .trim()
             : "";
+
 
     const selected =
         filter
             ? filter.value
             : "all";
 
+
     const products =
         productsGrid.querySelectorAll(".product");
+
+
+    let visibleCount = 0;
 
 
     products.forEach(product => {
 
         const name =
             (product.dataset.name || "")
-            .toLowerCase();
+                .toLowerCase();
+
 
         const text =
-            product.innerText.toLowerCase();
+            (product.innerText || "")
+                .toLowerCase();
+
 
         const price =
-            Number(product.dataset.price || 0);
+            Number(
+                product.dataset.price || 0
+            );
 
 
         /* SEARCH */
@@ -228,12 +269,32 @@ function applyProductsFilter() {
         }
 
 
+        const visible =
+            matchesSearch &&
+            matchesPrice;
+
+
         product.style.display =
-            matchesSearch && matchesPrice
+            visible
                 ? ""
                 : "none";
 
+
+        if (visible) {
+            visibleCount++;
+        }
+
     });
+
+
+    if (noResults) {
+
+        noResults.style.display =
+            visibleCount === 0
+                ? "block"
+                : "none";
+
+    }
 
 }
 
@@ -282,12 +343,17 @@ if (laptop) {
             (event) => {
 
                 const x =
-                    (window.innerWidth / 2 -
-                    event.clientX) / 55;
+                    (
+                        window.innerWidth / 2 -
+                        event.clientX
+                    ) / 55;
+
 
                 const y =
-                    (window.innerHeight / 2 -
-                    event.clientY) / 70;
+                    (
+                        window.innerHeight / 2 -
+                        event.clientY
+                    ) / 70;
 
 
                 laptop.style.transform =
@@ -318,6 +384,7 @@ function showProduct(
     const modal =
         document.getElementById("modal");
 
+
     if (!modal) {
         return;
     }
@@ -346,21 +413,26 @@ function showProduct(
         modalTitle.textContent = title;
     }
 
+
     if (modalCpu) {
         modalCpu.textContent = cpu;
     }
+
 
     if (modalRam) {
         modalRam.textContent = ram;
     }
 
+
     if (modalStorage) {
         modalStorage.textContent = storage;
     }
 
+
     if (modalGpu) {
         modalGpu.textContent = gpu;
     }
+
 
     if (modalPrice) {
         modalPrice.textContent = price;
@@ -383,9 +455,11 @@ function closeProduct() {
     const modal =
         document.getElementById("modal");
 
+
     if (!modal) {
         return;
     }
+
 
     modal.classList.remove("active");
 
@@ -483,9 +557,30 @@ window.addEventListener(
 
 
 /* =========================
+   ESCAPE MOBILE MENU
+========================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            nav
+        ) {
+
+            nav.classList.remove("active");
+
+        }
+
+    }
+);
+
+
+/* =========================
    ORABI READY
 ========================= */
 
 console.log(
-    "ORABI Premium Website Loaded."
+    "ORABI Premium Website Loaded - 11 Products."
 );
