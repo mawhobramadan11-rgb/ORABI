@@ -70,9 +70,16 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
             e.preventDefault();
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
+            const headerHeight = 70;
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
             });
 
         }
@@ -113,7 +120,7 @@ if ("IntersectionObserver" in window) {
             },
 
             {
-                threshold: 0.12
+                threshold: 0.10
             }
 
         );
@@ -151,7 +158,9 @@ const filter =
 
 function applyProductsFilter() {
 
-    if (!productsGrid) return;
+    if (!productsGrid) {
+        return;
+    }
 
     const searchValue =
         searchInput
@@ -171,7 +180,7 @@ function applyProductsFilter() {
 
         const name =
             (product.dataset.name || "")
-                .toLowerCase();
+            .toLowerCase();
 
         const text =
             product.innerText.toLowerCase();
@@ -276,7 +285,6 @@ if (laptop) {
                     (window.innerWidth / 2 -
                     event.clientX) / 55;
 
-
                 const y =
                     (window.innerHeight / 2 -
                     event.clientY) / 70;
@@ -310,7 +318,9 @@ function showProduct(
     const modal =
         document.getElementById("modal");
 
-    if (!modal) return;
+    if (!modal) {
+        return;
+    }
 
 
     const modalTitle =
@@ -336,26 +346,21 @@ function showProduct(
         modalTitle.textContent = title;
     }
 
-
     if (modalCpu) {
         modalCpu.textContent = cpu;
     }
-
 
     if (modalRam) {
         modalRam.textContent = ram;
     }
 
-
     if (modalStorage) {
         modalStorage.textContent = storage;
     }
 
-
     if (modalGpu) {
         modalGpu.textContent = gpu;
     }
-
 
     if (modalPrice) {
         modalPrice.textContent = price;
@@ -378,8 +383,9 @@ function closeProduct() {
     const modal =
         document.getElementById("modal");
 
-    if (!modal) return;
-
+    if (!modal) {
+        return;
+    }
 
     modal.classList.remove("active");
 
@@ -444,7 +450,11 @@ document
 
         image.addEventListener(
             "dragstart",
-            event => event.preventDefault()
+            event => {
+
+                event.preventDefault();
+
+            }
         );
 
     });
@@ -455,18 +465,21 @@ document
    WHEN RESIZING
 ========================= */
 
-window.addEventListener("resize", () => {
+window.addEventListener(
+    "resize",
+    () => {
 
-    if (
-        window.innerWidth > 900 &&
-        nav
-    ) {
+        if (
+            window.innerWidth > 768 &&
+            nav
+        ) {
 
-        nav.classList.remove("active");
+            nav.classList.remove("active");
+
+        }
 
     }
-
-});
+);
 
 
 /* =========================
@@ -474,5 +487,5 @@ window.addEventListener("resize", () => {
 ========================= */
 
 console.log(
-    "ORABI Premium Website Loaded Successfully."
+    "ORABI Premium Website Loaded."
 );
