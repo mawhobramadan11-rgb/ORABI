@@ -60,6 +60,10 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
         const targetId = this.getAttribute("href");
 
+        if (!targetId || targetId === "#") {
+            return;
+        }
+
         const target = document.querySelector(targetId);
 
         if (target) {
@@ -141,6 +145,10 @@ const searchInput =
 const productsGrid =
     document.getElementById("productsGrid");
 
+const filter =
+    document.getElementById("filter");
+
+
 function applyProductsFilter() {
 
     if (!productsGrid) return;
@@ -150,22 +158,20 @@ function applyProductsFilter() {
             ? searchInput.value.toLowerCase().trim()
             : "";
 
-    const filterElement =
-        document.getElementById("filter");
-
     const selected =
-        filterElement
-            ? filterElement.value
+        filter
+            ? filter.value
             : "all";
 
     const products =
         productsGrid.querySelectorAll(".product");
 
+
     products.forEach(product => {
 
         const name =
             (product.dataset.name || "")
-            .toLowerCase();
+                .toLowerCase();
 
         const text =
             product.innerText.toLowerCase();
@@ -186,6 +192,7 @@ function applyProductsFilter() {
 
         let matchesPrice = true;
 
+
         if (selected === "low") {
 
             matchesPrice =
@@ -194,6 +201,7 @@ function applyProductsFilter() {
 
         }
 
+
         if (selected === "mid") {
 
             matchesPrice =
@@ -201,6 +209,7 @@ function applyProductsFilter() {
                 price <= 20000;
 
         }
+
 
         if (selected === "high") {
 
@@ -230,9 +239,6 @@ if (searchInput) {
 }
 
 
-const filter =
-    document.getElementById("filter");
-
 if (filter) {
 
     filter.addEventListener(
@@ -251,12 +257,14 @@ if (filter) {
 const laptop =
     document.getElementById("laptop");
 
+
 if (laptop) {
 
     const desktop =
         window.matchMedia(
             "(min-width: 901px)"
         );
+
 
     if (desktop.matches) {
 
@@ -268,9 +276,11 @@ if (laptop) {
                     (window.innerWidth / 2 -
                     event.clientX) / 55;
 
+
                 const y =
                     (window.innerHeight / 2 -
                     event.clientY) / 70;
+
 
                 laptop.style.transform =
                     `rotateY(${-12 + x}deg)
@@ -326,21 +336,26 @@ function showProduct(
         modalTitle.textContent = title;
     }
 
+
     if (modalCpu) {
         modalCpu.textContent = cpu;
     }
+
 
     if (modalRam) {
         modalRam.textContent = ram;
     }
 
+
     if (modalStorage) {
         modalStorage.textContent = storage;
     }
 
+
     if (modalGpu) {
         modalGpu.textContent = gpu;
     }
+
 
     if (modalPrice) {
         modalPrice.textContent = price;
@@ -365,6 +380,7 @@ function closeProduct() {
 
     if (!modal) return;
 
+
     modal.classList.remove("active");
 
     document.body.style.overflow = "";
@@ -378,6 +394,7 @@ function closeProduct() {
 
 const productModal =
     document.getElementById("modal");
+
 
 if (productModal) {
 
@@ -434,9 +451,28 @@ document
 
 
 /* =========================
+   CLOSE MOBILE MENU
+   WHEN RESIZING
+========================= */
+
+window.addEventListener("resize", () => {
+
+    if (
+        window.innerWidth > 900 &&
+        nav
+    ) {
+
+        nav.classList.remove("active");
+
+    }
+
+});
+
+
+/* =========================
    ORABI READY
 ========================= */
 
 console.log(
-    "ORABI Premium Website Loaded."
+    "ORABI Premium Website Loaded Successfully."
 );
