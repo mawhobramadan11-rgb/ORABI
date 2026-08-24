@@ -2135,4 +2135,179 @@ footer {
     .section-head h2 {
         font-size: 29px;
     }
+}/* =====================================================
+   MOBILE - FINAL FIX
+   اللاب في المنتصف + منع أي خروج من الشاشة
+   بدون تغيير "اكتشف الأجهزة"
+===================================================== */
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden !important;
+    }
+
+    .container {
+        width: calc(100% - 24px);
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* =========================
+       LAPTOP CENTER
+    ========================= */
+
+    .hero-product {
+        position: relative;
+        width: 100%;
+        height: 365px;
+        min-height: 365px;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+    }
+
+    .laptop-scene {
+        position: relative;
+        width: 480px;
+        height: auto;
+        max-width: none;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .laptop {
+        position: relative;
+        width: 480px;
+        flex-shrink: 0;
+        margin: 0 auto;
+        transform: scale(.56) rotateY(-12deg) rotateX(5deg);
+        transform-origin: center center;
+    }
+
+    .laptop-screen {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .laptop-base {
+        margin-left: -10px;
+        margin-right: auto;
+    }
+
+    /* =========================
+       LOGO داخل شاشة اللاب
+    ========================= */
+
+    .screen-logo {
+        width: 84%;
+        max-width: 350px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* =========================
+       LIGHT
+    ========================= */
+
+    .product-light {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 285px;
+        height: 285px;
+        transform: translate(-50%, -50%);
+    }
+
+    /* =========================
+       FLOATING CARDS
+    ========================= */
+
+    .floating-card {
+        z-index: 10;
+        white-space: nowrap;
+    }
+
+    .card-one {
+        top: 35px;
+        right: 0;
+    }
+
+    .card-two {
+        bottom: 70px;
+        left: 0;
+    }
+
+    .card-three {
+        bottom: 12px;
+        right: 20px;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .hero-product {
+        height: 330px;
+        min-height: 330px;
+    }
+
+    .laptop-scene {
+        width: 480px;
+    }
+
+    .laptop {
+        transform: scale(.48) rotateY(-12deg) rotateX(5deg);
+    }
+
+    .screen-logo {
+        width: 86%;
+        max-width: 350px;
+    }
+
+    .card-one {
+        top: 30px;
+        right: 0;
+    }
+
+    .card-two {
+        bottom: 65px;
+        left: 0;
+    }
+
+    .card-three {
+        bottom: 8px;
+        right: 12px;
+    }
 }
