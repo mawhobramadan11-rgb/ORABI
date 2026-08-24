@@ -192,11 +192,15 @@ function applyProductsFilter() {
             Number(product.dataset.price || 0);
 
 
+        /* SEARCH */
+
         const matchesSearch =
             !searchValue ||
             name.includes(searchValue) ||
             text.includes(searchValue);
 
+
+        /* PRICE */
 
         let matchesPrice = true;
 
