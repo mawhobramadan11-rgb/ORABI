@@ -46,20 +46,18 @@
             </a>
 
             <nav id="nav">
-
                 <a href="#home">الرئيسية</a>
                 <a href="#products">الأجهزة</a>
                 <a href="#about">لماذا عرابي؟</a>
                 <a href="#reviews">آراء العملاء</a>
                 <a href="#contact">تواصل معنا</a>
-
             </nav>
 
             <a href="tel:01030983469" class="header-phone">
                 01030983469
             </a>
 
-            <button class="menu" id="menu">
+            <button class="menu" id="menu" aria-label="فتح القائمة">
                 ☰
             </button>
 
@@ -87,7 +85,6 @@
                     <h1>
                         جهازك القادم
                         <br>
-
                         <strong>
                             يبدأ من <em>ORABI</em>
                         </strong>
@@ -108,6 +105,7 @@
                         <a
                             href="https://wa.me/201030983469"
                             target="_blank"
+                            rel="noopener"
                             class="btn btn-outline"
                         >
                             تواصل واتساب
@@ -150,13 +148,12 @@
 
                                 <div class="screen-frame">
 
-                                    <!-- صورة اللاب نفسها -->
                                     <img
                                         src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1400&q=90"
                                         alt="ORABI Laptop"
                                     >
 
-                                    <!-- شعار ORABI فوق شاشة اللاب -->
+                                    <!-- شعار عرابي في منتصف الشاشة -->
                                     <div class="screen-overlay">
 
                                         <img
@@ -172,11 +169,8 @@
                             </div>
 
                             <div class="laptop-base">
-
                                 <div class="keyboard"></div>
-
                                 <div class="trackpad"></div>
-
                             </div>
 
                         </div>
@@ -239,13 +233,8 @@
                 <div class="section-head reveal">
 
                     <div>
-
                         <small>ORABI COLLECTION</small>
-
-                        <h2>
-                            اختار جهازك
-                        </h2>
-
+                        <h2>اختار جهازك</h2>
                     </div>
 
                     <p>
@@ -259,7 +248,6 @@
                 <div class="filters reveal">
 
                     <div class="search-box">
-
                         <span>⌕</span>
 
                         <input
@@ -267,26 +255,14 @@
                             type="text"
                             placeholder="ابحث عن موديل الجهاز..."
                         >
-
                     </div>
 
                     <select id="filter">
 
-                        <option value="all">
-                            كل الأجهزة
-                        </option>
-
-                        <option value="low">
-                            أقل من 15,000
-                        </option>
-
-                        <option value="mid">
-                            من 15,000 إلى 20,000
-                        </option>
-
-                        <option value="high">
-                            أكثر من 20,000
-                        </option>
+                        <option value="all">كل الأجهزة</option>
+                        <option value="low">أقل من 15,000</option>
+                        <option value="mid">من 15,000 إلى 20,000</option>
+                        <option value="high">أكثر من 20,000</option>
 
                     </select>
 
@@ -294,7 +270,6 @@
 
 
                 <div class="products-grid" id="productsGrid">
-
 
                     <!-- PRODUCT 1 -->
                     <article
@@ -305,9 +280,7 @@
 
                         <div class="product-image">
 
-                            <span class="available">
-                                متاح
-                            </span>
+                            <span class="available">متاح</span>
 
                             <img
                                 src="HP ZBook Power G8.png"
@@ -320,9 +293,7 @@
 
                             <small>HP ZBOOK</small>
 
-                            <h3>
-                                HP ZBook Power G8
-                            </h3>
+                            <h3>HP ZBook Power G8</h3>
 
                             <div class="specs">
                                 <span>i7-11H</span>
@@ -584,62 +555,6 @@
                     <article
                         class="product reveal"
                         data-name="Dell 5520"
-                        data-price="17500"
-                    >
-
-                        <div class="product-image">
-
-                            <span class="available">متاح</span>
-
-                            <img
-                                src="Dell Precision 5520.png"
-                                alt="Dell Precision 5520"
-                            >
-
-                        </div>
-
-                        <div class="product-info">
-
-                            <small>DELL PRECISION</small>
-
-                            <h3>Dell 5520</h3>
-
-                            <div class="specs">
-                                <span>i7-7HQ</span>
-                                <span>RAM 16GB</span>
-                                <span>SSD 512GB</span>
-                                <span>M2000 4GB</span>
-                            </div>
-
-                            <div class="product-bottom">
-
-                                <strong>
-                                    17,000
-                                    <small>جنيه</small>
-                                </strong>
-
-                                <button onclick="showProduct(
-                                    'Dell 5520',
-                                    'Core i7-7HQ',
-                                    '16GB RAM',
-                                    '512GB SSD',
-                                    'M2000 4GB',
-                                    '17,000 جنيه'
-                                )">
-                                    التفاصيل
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- PRODUCT 7 -->
-                    <article
-                        class="product reveal"
-                        data-name="Dell Precision 5520"
                         data-price="17000"
                     >
 
@@ -692,7 +607,7 @@
                     </article>
 
 
-                    <!-- PRODUCT 8 -->
+                    <!-- PRODUCT 7 -->
                     <article
                         class="product reveal"
                         data-name="Dell Latitude 5430"
@@ -748,7 +663,7 @@
                     </article>
 
 
-                    <!-- PRODUCT 9 -->
+                    <!-- PRODUCT 8 -->
                     <article
                         class="product reveal"
                         data-name="Dell Latitude 5440 Gen 12"
@@ -804,7 +719,7 @@
                     </article>
 
 
-                    <!-- PRODUCT 10 -->
+                    <!-- PRODUCT 9 -->
                     <article
                         class="product reveal"
                         data-name="Dell Latitude 5440 Gen 13"
@@ -860,7 +775,7 @@
                     </article>
 
 
-                    <!-- PRODUCT 11 -->
+                    <!-- PRODUCT 10 -->
                     <article
                         class="product reveal"
                         data-name="HP EliteBook 850 G7"
@@ -921,7 +836,7 @@
         </section>
 
 
-        <!-- WHY ORABI -->
+        <!-- ABOUT -->
         <section class="about section" id="about">
 
             <div class="container">
@@ -1096,6 +1011,7 @@
                         <a
                             href="https://www.facebook.com/profile.php?id=61565078710262"
                             target="_blank"
+                            rel="noopener"
                         >
                             Facebook
                         </a>
@@ -1103,6 +1019,7 @@
                         <a
                             href="https://www.instagram.com/1_orabi/"
                             target="_blank"
+                            rel="noopener"
                         >
                             Instagram
                         </a>
@@ -1110,6 +1027,7 @@
                         <a
                             href="https://www.tiktok.com/@1_orabi"
                             target="_blank"
+                            rel="noopener"
                         >
                             TikTok
                         </a>
@@ -1153,6 +1071,7 @@
                     <a
                         href="https://wa.me/201030983469"
                         target="_blank"
+                        rel="noopener"
                         class="whatsapp"
                     >
                         واتساب
@@ -1161,6 +1080,7 @@
                     <a
                         href="https://maps.app.goo.gl/Yvq9JGAXstZTbpXa8?g_st=ic"
                         target="_blank"
+                        rel="noopener"
                         class="location"
                     >
                         📍 موقع الفرع
@@ -1221,15 +1141,14 @@
             <button
                 class="modal-close"
                 onclick="closeProduct()"
+                aria-label="إغلاق"
             >
                 ×
             </button>
 
             <small>ORABI LAPTOP</small>
 
-            <h2 id="modalTitle">
-                الجهاز
-            </h2>
+            <h2 id="modalTitle">الجهاز</h2>
 
             <div class="modal-specs">
 
@@ -1255,14 +1174,12 @@
 
             </div>
 
-            <strong
-                id="modalPrice"
-                class="modal-price"
-            ></strong>
+            <strong id="modalPrice" class="modal-price"></strong>
 
             <a
                 href="https://wa.me/201030983469"
                 target="_blank"
+                rel="noopener"
                 class="modal-whatsapp"
             >
                 اسأل عن الجهاز على واتساب
